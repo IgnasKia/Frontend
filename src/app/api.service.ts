@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from  './user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class ApiService {
   API_SERVER = "http://localhost:3000";
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) { }
 
   public register(user: User){
@@ -25,7 +27,12 @@ export class ApiService {
     return !!localStorage.getItem('token');
   }
 
-  getToken() {
+  public getToken() {
     return localStorage.getItem('token');
+  }
+
+  public logoutUser() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

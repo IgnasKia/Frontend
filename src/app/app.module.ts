@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard,{
+  providers: [AuthGuard, ApiService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
