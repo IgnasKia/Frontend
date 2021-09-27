@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-     <span><a href="/">HOME</a></span>
-     <a mat-button routerLink="/profile" *ngIf="apiService.loggedIn()">Profile</a>
+     <a mat-mini-fab mat-button href="/">
+      <mat-icon>home</mat-icon>
+     </a>
+     <a mat-stroked-button color="accent" routerLink="/profile" *ngIf="apiService.loggedIn()">Profile</a>
      <span class="spacer"></span>
-     <a mat-button routerLink="/register" *ngIf="!apiService.loggedIn()">Register</a>
-     <a mat-button routerLink="/login" *ngIf="!apiService.loggedIn()">Login</a>
-     <a mat-button routerLink="/login" *ngIf="apiService.loggedIn()" (click)="apiService.logoutUser()">Logout</a>
+     <a mat-stroked-button routerLink="/register" *ngIf="!apiService.loggedIn()">Register</a>
+     <a mat-stroked-button routerLink="/login" *ngIf="!apiService.loggedIn()">Login</a>
+     <a mat-stroked-button color="warn" routerLink="/login" *ngIf="apiService.loggedIn()" (click)="apiService.logoutUser()">Logout</a>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
