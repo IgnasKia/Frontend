@@ -7,18 +7,16 @@ import { ApiService } from './api.service';
 })
 export class TokenInterceptorService implements HttpInterceptor{
 
-
-  
   constructor(private injector: Injector) { }
 
-  intercept(req: { clone: (arg0: { setHeaders: { Authorization: string; }; }) => any; }, next: { handle: (arg0: any) => any; }) {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
     const apiService = this.injector.get(ApiService)
     const tokenizedReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${apiService.getToken()}`
       }
-    })
+    });
     return next.handle(tokenizedReq);
-    }
+    };
   
 }

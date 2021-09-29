@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
   
-  registerUser(){
+   registerUser(){
     this.submitted = true;
 
     if (this.registerForm.invalid) {
@@ -59,9 +59,9 @@ export class RegisterComponent implements OnInit {
     }
 
     console.log(JSON.stringify(this.registerForm.value, null, 2));
-    this.apiService.register(this.registerForm.value).subscribe((result)=>{
+    (this.apiService.register(this.registerForm.value)).subscribe((result)=>{
       console.log(result);
-      this.router.navigate(['/login']);
     });
+    this.router.navigate(['/login']);
   }
 }

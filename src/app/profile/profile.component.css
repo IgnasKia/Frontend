@@ -1,0 +1,9 @@
+.example-card {
+    display:inline-flex;
+    background-color: DodgerBlue;
+    max-width: 350px;
+    margin: 10px;
+}
+span.toolbar {
+    margin: 0 auto;
+}

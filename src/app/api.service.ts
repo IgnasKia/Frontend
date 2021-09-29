@@ -23,12 +23,16 @@ export class ApiService {
     return this.httpClient.post<User[]>(`${this.API_SERVER}/auth/signin`, user);
   }
 
+  public getUsers(){
+    return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/admin`);
+  }
+
   public loggedIn() {
     return !!localStorage.getItem('token');
   }
 
   public getToken() {
-    return localStorage.getItem('token');
+     return localStorage.getItem('token');
   }
 
   public logoutUser() {

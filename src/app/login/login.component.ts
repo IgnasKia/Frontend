@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    this.apiService.login(this.loginForm.value).subscribe(
+   (this.apiService.login(this.loginForm.value)).subscribe(
       res => {
         console.log(res);
         localStorage.setItem('tempToken', JSON.stringify(res));

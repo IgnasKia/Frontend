@@ -13,8 +13,8 @@ export class AuthGuard implements CanActivate {
     private api: ApiService
   ) {}
 
-  canActivate(): boolean {
-    if (this.api.loggedIn() ) {
+  async canActivate(): Promise<boolean> {
+    if (await this.api.loggedIn() ) {
       return true;
     } else {
       this.router.navigate(['/login']);
