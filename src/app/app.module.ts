@@ -14,13 +14,19 @@ import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ApiService } from './api.service';
+import { HomeComponent } from './home/home.component';
+import { UsersComponent } from './users/users.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent,
+    UsersComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

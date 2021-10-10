@@ -9,13 +9,13 @@ import { ApiService } from '../api.service';
 export class ProfileComponent implements OnInit {
 
 
-  users: any;
+  user: any;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getUsers().subscribe( data => {
-      this.users = data;
-    })
+    this.apiService.getUser().subscribe( data => {
+      this.user = data;
+    });
   }
 }

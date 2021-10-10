@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-   (this.apiService.login(this.loginForm.value)).subscribe(
+   this.apiService.login(this.loginForm.value).subscribe(
       res => {
         console.log(res);
         localStorage.setItem('tempToken', JSON.stringify(res));
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         console.log(savedPerson.accessToken);
         this.router.navigate(['/profile']);
       }
-     );
+     )
   }
   
 }

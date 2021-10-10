@@ -4,12 +4,18 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: "register", component: RegisterComponent},
   {path: "login", component: LoginComponent},
-  {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]}
+  {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: "users", component: UsersComponent, canActivate: [AuthGuard]},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
