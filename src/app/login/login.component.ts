@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', savedPerson.accessToken);
         localStorage.removeItem('tempToken');
         console.log(savedPerson.accessToken);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
       }
      )
   }
