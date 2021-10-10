@@ -1,0 +1,10 @@
+<mat-toolbar>
+    <span class="toolbar">Admin panel</span>
+</mat-toolbar>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Users">
+        <h1 *ngFor="let user of users"> {{ user.username }}</h1>
+    </mat-tab>
+    <mat-tab label="Cards">Cards</mat-tab>
+</mat-tab-group>
+

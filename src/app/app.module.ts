@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     UsersComponent,
     NotFoundComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

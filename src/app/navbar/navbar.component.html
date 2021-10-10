@@ -5,8 +5,9 @@
        </a>
        <a mat-stroked-button color="accent" routerLink="/profile" *ngIf="apiService.loggedIn()">My cards</a>
        <a mat-stroked-button color="accent" routerLink="/users" *ngIf="apiService.loggedIn()">Users</a>
+       <a mat-stroked-button color="accent" routerLink="/admin" *ngIf="apiService.loggedIn() && isAdmin">Admin Panel</a>
        <span class="spacer"></span>
-       <h1>Balance: {{ user.balance }}</h1>
+       <h1 *ngIf="apiService.loggedIn()">Balance: {{ balance }}</h1>
        <span class="spacer"></span>
        <a mat-stroked-button routerLink="/register" *ngIf="!apiService.loggedIn()">Register</a>
        <a mat-stroked-button routerLink="/login" *ngIf="!apiService.loggedIn()">Login</a>
