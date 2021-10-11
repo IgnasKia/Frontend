@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -6,15 +7,19 @@ import { ApiService } from '../api.service';
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.css']
 })
-export class AdminPanelComponent implements OnInit {
+export class AdminPanelComponent implements OnInit, OnDestroy {
 
   users: any;
+  subscription: Subscription;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getUsers().subscribe( data => {
+    this.subscription = this.apiService.getUsers().subscribe( data => {
       this.users = data;
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

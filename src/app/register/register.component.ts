@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Validation from '../validation';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -64,4 +65,5 @@ export class RegisterComponent implements OnInit {
     });
     this.router.navigate(['/login']);
   }
+
 }

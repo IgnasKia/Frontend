@@ -11,22 +11,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   user: any;
   subscription: Subscription;
-  isAdmin = false;
   balance = 0;
   constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.getUser();
-  }
-
-  async getUser() {
+    console.log("Asd")
     try {
-      this.apiService.getUser().subscribe( data => {
+      this.subscription = this.apiService.getUser().subscribe( data => {
         this.user = data;
         this.balance = this.user.balance;
-        if (this.user.admin) {
-          this.isAdmin = true;
-        }
       });
     } catch (error) {
       console.log(error);
@@ -34,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -49,16 +49,20 @@ export class ApiService {
   }
 
   public getUsers(){
-    const token = this.getToken();
-    let tokenInfo = this.getDecodedAccessToken(token!); // decode token
-    let userId = tokenInfo._id; // get user _id from token
-    return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/admin`).pipe(retry(1),
+    return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/users`).pipe(retry(1),
       catchError(this.handleError)
     );
   }
 
   public loggedIn() {
     return !!localStorage.getItem('token');
+  }
+
+  public isAdmin() {
+    const token = this.getToken();
+    let tokenInfo = this.getDecodedAccessToken(token!); // decode token
+    let isAdmin = tokenInfo.admin; // get user _id from token
+    return isAdmin;
   }
 
   public getToken() {

@@ -1,3 +1,8 @@
+
+body {
+  background: linear-gradient(to bottom, #333333, #e9d362); 
+}
+
 .my-form{
     min-width: 150px;
     max-width: 500px;
@@ -6,4 +11,17 @@
    
   .full-width {
     width: 100%;
+  }
+
+  mat-card{
+    position: absolute;
+    left: 40%;
+    top: 25%;
+    height: 450px;
+    width: 370px;
+  }
+
+  mat-toolbar {
+    display: flex;
+    justify-content: center;
   }
