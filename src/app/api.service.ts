@@ -54,6 +54,18 @@ export class ApiService {
     );
   }
 
+  public deleteUser(userId: any){
+    return this.httpClient.delete<User[]>(`${this.API_SERVER}/auth/user/${userId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public updateUser(user: User, userId: any){
+    return this.httpClient.patch<User[]>(`${this.API_SERVER}/auth/user/${userId}`, user).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
   public loggedIn() {
     return !!localStorage.getItem('token');
   }

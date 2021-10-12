@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router) { }
   
   registerForm = this.fb.group({
-    fullname: ['', Validators.required],
+    fullName: ['', Validators.required],
         username: [
           '',
           [

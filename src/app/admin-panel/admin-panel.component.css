@@ -1,9 +1,20 @@
-.example-card {
-    display:inline-flex;
-    background-color: DodgerBlue;
-    max-width: 350px;
+
+ .card {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100px;
+    margin: 10px;
+    padding: 10px;
+}
+.mat-card {
     margin: 10px;
 }
 span.toolbar {
     margin: 0 auto;
 }
+
+table {
+    width: 80%;
+    margin: auto;
+  }
+  

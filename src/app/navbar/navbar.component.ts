@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
-    console.log("Asd")
     try {
       this.subscription = this.apiService.getUser().subscribe( data => {
         this.user = data;

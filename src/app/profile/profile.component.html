@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <mat-toolbar>
-    <span class="toolbar">Hello {{ user.username }}<mat-card class="example-card">
-        <mat-card-title>There will be showing my cards</mat-card-title>
+    <span class="toolbar">Hello<mat-card class="example-card">
+        <mat-card-title *ngIf="user">{{user.username}}</mat-card-title>
     </mat-card></span>
 </mat-toolbar>

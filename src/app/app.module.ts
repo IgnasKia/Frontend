@@ -19,6 +19,7 @@ import { UsersComponent } from './users/users.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     UsersComponent,
     NotFoundComponent,
     NavbarComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    RoleDialogComponent
   ],
   imports: [
     BrowserModule,

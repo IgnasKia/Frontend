@@ -24,13 +24,12 @@ export class LoginComponent implements OnInit {
   loginUser(){
    this.apiService.login(this.loginForm.value).subscribe(
       res => {
-        console.log(res);
         localStorage.setItem('tempToken', JSON.stringify(res));
         const savedPerson = JSON.parse(localStorage.getItem('tempToken')!);
         localStorage.setItem('token', savedPerson.accessToken);
         localStorage.removeItem('tempToken');
-        console.log(savedPerson.accessToken);
         this.router.navigate(['/']);
+        console.log(this.loginForm.value);
       }
      )
   }
