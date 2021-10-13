@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
+import { Card } from './card';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,12 @@ export class ApiService {
     );
   }
 
+  public createCard(card: Card){
+    return this.httpClient.post<User[]>(`${this.API_SERVER}/auth/cards`, card).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
   public loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -73,7 +80,7 @@ export class ApiService {
   public isAdmin() {
     const token = this.getToken();
     let tokenInfo = this.getDecodedAccessToken(token!); // decode token
-    let isAdmin = tokenInfo.admin; // get user _id from token
+    let isAdmin = tokenInfo.admin;
     return isAdmin;
   }
 

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UsersComponent } from './users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
   {path: "users", component: UsersComponent, canActivate: [AuthGuard]},
-  {path: "admin", component: AdminPanelComponent, canActivate: [AuthGuard]},
+  {path: "admin", component: AdminPanelComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
