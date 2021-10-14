@@ -9,19 +9,19 @@ body {
     width: 100%;
   }
    
-  .full-width {
-    width: 100%;
-  }
+.full-width {
+  width: 100%;
+}
 
-  mat-card{
-    position: absolute;
-    left: 40%;
-    top: 25%;
-    height: 450px;
-    width: 370px;
-  }
+mat-card{
+  position: absolute;
+  left: 40%;
+  top: 25%;
+  height: 450px;
+  width: 370px;
+}
 
-  mat-toolbar {
-    display: flex;
-    justify-content: center;
-  }
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+}

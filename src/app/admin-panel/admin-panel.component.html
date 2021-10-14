@@ -56,69 +56,56 @@
          <mat-card-content>
             <form [formGroup]="cardCreateForm" (ngSubmit)="createCard()" >
               
-                <mat-form-field class="full-width">
-                    <mat-label>Card Name</mat-label>
-                    <input  matInput  placeholder="CardName" id="cardName" type="text" formControlName="name">
-                    <!-- <mat-error *ngIf="submitted && f.fullName.errors">
-                     <mat-error *ngIf="f.fullName.errors.required">
-                        Full name is required
+               <mat-form-field class="full-width">
+                  <mat-label>Card Name</mat-label>
+                  <input  matInput  placeholder="CardName" id="cardName" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <mat-error *ngIf="submitted && f.name.errors">
+                     <mat-error *ngIf="f.name.errors.required">
+                        Name is required
                      </mat-error>
-                    </mat-error> -->
-                 </mat-form-field>
-<!--       
-                 <mat-form-field class="full-width">
-                  <mat-label>Picture</mat-label>
-                     <input  matInput  placeholder="Username" id="username" type="text" formControlName="username">
-                     <input type="file" class="file-upload" formControlName="picture" onchange="console.log(event.target.files)">
-                     <mat-error *ngIf="submitted && f.username.errors">
-                        <mat-error *ngIf="f.username.errors.required">
-                           Username is required
-                        </mat-error>
-                        <mat-error *ngIf="f.username.errors.minlength">
-                           Username must be at least 6 characters
-                        </mat-error>
-                        <mat-error *ngIf="f.username.errors.maxlength">
-                           Username must not exceed 20 characters
+                     <mat-error *ngIf="f.name.errors.minlength">
+                        Password must be at least 4 characters
+                     </mat-error>
+                     <mat-error *ngIf="f.name.errors.maxlength">
+                        Password must not exceed 20 characters
+                     </mat-error>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field class="full-width">
+                  <mat-label>Picture link</mat-label>
+                  <input  matInput  placeholder="Picture" id="picture" type="text" formControlName="picture" [ngClass]="{ 'is-invalid': submitted && f.picture.errors }">
+                     <mat-error *ngIf="submitted && f.picture.errors">
+                        <mat-error *ngIf="f.picture.errors.required">
+                        Picture link is required
                         </mat-error>
                      </mat-error>
-                  </mat-form-field> -->
+               </mat-form-field>
       
-                  <mat-form-field class="full-width">
-                     <mat-label>Price</mat-label>
-                        <input  matInput  placeholder="Price" id="price" type="text" formControlName="price">
-                        <!-- <mat-error *ngIf="submitted && f.email.errors">
-                           <mat-error *ngIf="f.email.errors.required">
-                              Email is required
-                           </mat-error>
-                           <mat-error *ngIf="f.email.errors.email">
-                              Email is invalid
-                           </mat-error>
-                        </mat-error> -->
-                     </mat-form-field>
+               <mat-form-field class="full-width">
+                  <mat-label>Price</mat-label>
+                  <input  matInput  placeholder="Price" id="price" type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+                  <mat-error *ngIf="submitted && f.price.errors">
+                     <mat-error *ngIf="f.price.errors.required">
+                        Price is required
+                     </mat-error>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field appearance="fill">
+                  <mat-label>Role</mat-label>
+                  <mat-select name="role" formControlName="rarity" [ngClass]="{ 'is-invalid': submitted && f.rarity.errors }">
+                    <mat-option *ngFor="let rarity of rarity" [value]="rarity.value">
+                      {{rarity.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="submitted && f.rarity.errors">
+                     <mat-error *ngIf="f.rarity.errors.required">
+                        Rarity is required
+                     </mat-error>
+                  </mat-error>
+                </mat-form-field>  
       
-                     <!-- <mat-form-field class="full-width">
-                        <mat-label>Rarity</mat-label>
-                          <mat-label>Favorite food</mat-label>
-                          <mat-select formControlName="rarity">
-                            <mat-option *ngFor="let food of foods" [value]="food.value" >
-                              {{food.viewValue}}
-                            </mat-option>
-                          </mat-select>
-                           <input  matInput  placeholder="Password" id="password" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                           <mat-error *ngIf="submitted && f.password.errors">
-                              <mat-error *ngIf="f.password.errors.required">
-                                 Password is required
-                              </mat-error>
-                              <mat-error *ngIf="f.password.errors.minlength">
-                                 Password must be at least 6 characters
-                              </mat-error>
-                              <mat-error *ngIf="f.password.errors.maxlength">
-                                 Password must not exceed 40 characters
-                              </mat-error>
-                           </mat-error>
-                     </mat-form-field> -->
-    
-                        
                <mat-card-actions>
                    <button mat-raised-button type="submit" color="primary">Create</button>
                </mat-card-actions>

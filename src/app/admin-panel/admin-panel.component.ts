@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 import { User } from '../user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserElement {
   username: string;
 }
@@ -31,7 +32,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   submitted = false;
   private subscriptions = new Subscription();
   
-  constructor(private apiService: ApiService, public dialog: MatDialog, private fb: FormBuilder) {}
+  constructor(private apiService: ApiService, public dialog: MatDialog, private fb: FormBuilder, private _snackBar: MatSnackBar) {}
 
   rarity: Rarity[] = [
     {value: 'common', viewValue: 'Common'},
@@ -41,24 +42,14 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   ];
 
   cardCreateForm = this.fb.group({
-    name: ['', Validators.required],
-        picture: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20)
-          ]
-        ],
+    name: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(20)]
+    ],
+        picture: ['', Validators.required ],
         price: ['', Validators.required],
-        rarity: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(40)
-          ]
-        ]
+        rarity: ['', Validators.required,]
   });
 
   openDialog(id: any) {
@@ -108,11 +99,24 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
    createCard(){
     this.submitted = true;
 
-    console.log(JSON.stringify(this.cardCreateForm.value, null, 2));
-    (this.apiService.createCard(this.cardCreateForm.value)).subscribe((result)=>{
-      console.log(result);
+    if (this.cardCreateForm.invalid) {
+      return;
+    }
+
+    this.apiService.createCard(this.cardCreateForm.value).subscribe((result)=>{
+      console.log(result),
+      this.openSnackBar();
+      this.cardCreateForm.reset();
     });
   }
+
+  openSnackBar() {
+    this._snackBar.open("New card has been created successfully", '', {
+      duration: 3000,
+      verticalPosition: 'top'
+    });
+  }
+
 
   ngOnDestroy() {
     // this.subscriptions.unsubscribe();

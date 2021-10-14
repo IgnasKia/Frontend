@@ -68,7 +68,13 @@ export class ApiService {
   }
 
   public createCard(card: Card){
-    return this.httpClient.post<User[]>(`${this.API_SERVER}/auth/cards`, card).pipe(retry(1),
+    return this.httpClient.post<Card[]>(`${this.API_SERVER}/cards/create`, card).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public getAllCards(){
+    return this.httpClient.get<Card[]>(`${this.API_SERVER}/cards`).pipe(retry(1),
       catchError(this.handleError)
     );
   }
