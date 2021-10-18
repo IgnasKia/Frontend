@@ -20,6 +20,7 @@ export class ApiService {
     private router: Router
   ) { }
 
+  // -----------------------------USER SECTION START API----------------------------- 
   public register(user: User){
     return this.httpClient.post<User[]>(`${this.API_SERVER}/auth/signup`, user).pipe(retry(1),
       catchError(this.handleError)
@@ -39,15 +40,6 @@ export class ApiService {
     return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/user/${userId}`).pipe(retry(1),
       catchError(this.handleError)
     );
-  }
-
-  public getDecodedAccessToken(token: string): any {
-    try{
-        return jwt_decode(token);
-    }
-    catch(Error){
-        return null;
-    }
   }
 
   public getUsers(){
@@ -73,7 +65,9 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
+  // -----------------------------USER SECTION END----------------------------- 
 
+  // -----------------------------CARD SECTION START API-----------------------------   
   public createCard(card: Card){
     return this.httpClient.post<Card[]>(`${this.API_SERVER}/cards/create`, card).pipe(retry(1),
       catchError(this.handleError)
@@ -85,6 +79,24 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
+
+  public getAllUserCards(userId: string){
+    return this.httpClient.get<Card[]>(`${this.API_SERVER}/user/${userId}/cards`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+// -----------------------------CARD SECTION START-----------------------------
+
+
+public getDecodedAccessToken(token: string): any {
+  try{
+      return jwt_decode(token);
+  }
+  catch(Error){
+      return null;
+  }
+}
 
   public loggedIn() {
     return !!localStorage.getItem('token');

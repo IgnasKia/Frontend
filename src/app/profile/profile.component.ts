@@ -9,18 +9,30 @@ import { ApiService } from '../api.service';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
-
+  cards: any;
   user: any;
-  subscription: Subscription;
+  userId: string;
+  private subscriptions = new Subscription();
   constructor(private apiService: ApiService) { }
 
   async ngOnInit(): Promise<void> {
-    this.subscription = this.apiService.getUser().subscribe( data => {
-      this.user = data;
-    });
+     this.getUserData();
   }
 
+  getUserData(){
+    this.subscriptions.add(this.apiService.getUser().subscribe( data => {
+      this.user = data;
+      this.getUserCards(this.user._id);
+    }));
+  }
+
+  getUserCards(userId: string) {
+    this.subscriptions.add(this.apiService.getAllUserCards(userId).subscribe( data => {
+      this.cards = data;
+    }));
+  } 
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }

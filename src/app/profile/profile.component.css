@@ -1,12 +1,45 @@
+
+body {
+    background: linear-gradient(to bottom, #333333, #e9d362); 
+  }
 .example-card {
-    display:inline-flex;
-    background-color: DodgerBlue;
-    max-width: 350px;
-    margin: 10px;
+    max-width: 250px;
+    margin: 20px;
 }
+  
+.example-header-image {
+    background-size: cover;
+}
+
+mat-card-actions, mat-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-card {
+    background: linear-gradient(to bottom, #333333, #e9d362); 
+}
+
+.cards {
+    display: flex;
+
+}
+mat-card-title {
+    background-color: yellow;
+}
+
+.card-name {
+    color: gold;
+}
+
+.card-rarity {
+    color: red;
+}
+
 span.toolbar {
     margin: 0 auto;
 }
+
 mat-toolbar {
     background: rgb(224, 182, 75);
 }
