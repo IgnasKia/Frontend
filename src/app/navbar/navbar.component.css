@@ -5,3 +5,10 @@
 a {
     margin: 2px;
 }
+.mat-toolbar {
+    background:black;
+}
+
+h1 {
+    color: #ffd740;
+}

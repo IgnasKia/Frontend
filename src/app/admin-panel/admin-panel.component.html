@@ -64,10 +64,10 @@
                         Name is required
                      </mat-error>
                      <mat-error *ngIf="f.name.errors.minlength">
-                        Password must be at least 4 characters
+                        Name  must be at least 4 characters
                      </mat-error>
                      <mat-error *ngIf="f.name.errors.maxlength">
-                        Password must not exceed 20 characters
+                        Name  must not exceed 20 characters
                      </mat-error>
                   </mat-error>
                </mat-form-field>
@@ -93,7 +93,7 @@
                </mat-form-field>
 
                <mat-form-field appearance="fill">
-                  <mat-label>Role</mat-label>
+                  <mat-label>Rarity</mat-label>
                   <mat-select name="role" formControlName="rarity" [ngClass]="{ 'is-invalid': submitted && f.rarity.errors }">
                     <mat-option *ngFor="let rarity of rarity" [value]="rarity.value">
                       {{rarity.viewValue}}

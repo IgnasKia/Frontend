@@ -27,5 +27,7 @@ table {
 .full-width {
   width: 100%;
 }
-
+mat-toolbar {
+  background: rgb(224, 182, 75);
+}
   

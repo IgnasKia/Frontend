@@ -12,10 +12,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
  
 @NgModule({
-imports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule],
-exports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule],
+imports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule],
+exports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule],
  
 })
  

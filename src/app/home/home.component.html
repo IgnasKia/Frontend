@@ -1,2 +1,30 @@
 <app-navbar></app-navbar>
-<p>home works!</p>
+<body>
+    <mat-toolbar>
+        <span class="toolbar">DAILY REWARD</span>
+    </mat-toolbar>
+
+<div class="reward-card">
+    <mat-card class="example-card">
+        <mat-card-title>
+        </mat-card-title>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <div class="container">
+            <img mat-card-image src="https://agma.io/img/buycoins/payeboland.zard.coin.png" alt="Photo of daily reward" class="image" (click)="updateUsersLastRewardDate(currentUser._id)">
+            <div class="middle">
+                <button mat-raised-button color="basic" class="reward-button" (click)="updateUsersLastRewardDate(currentUser._id)">Take daily reward</button>
+            </div>
+        </div>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-toolbar>
+    <span class="toolbar">CASES</span>
+</mat-toolbar>
+</body>

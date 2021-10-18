@@ -7,3 +7,6 @@
 span.toolbar {
     margin: 0 auto;
 }
+mat-toolbar {
+    background: rgb(224, 182, 75);
+}

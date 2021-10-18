@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 import { Card } from './card';
+import { UserReward } from './userReward';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,12 @@ export class ApiService {
 
   public updateUser(user: User, userId: any){
     return this.httpClient.patch<User[]>(`${this.API_SERVER}/auth/user/${userId}`, user).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public updateUserReward(userReward: UserReward, userId: any){
+    return this.httpClient.patch<UserReward[]>(`${this.API_SERVER}/auth/user/${userId}`, userReward).pipe(retry(1),
       catchError(this.handleError)
     );
   }

@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   constructor(private apiService: ApiService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.subscription = this.apiService.getUser().subscribe( data => {
       this.user = data;
     });
