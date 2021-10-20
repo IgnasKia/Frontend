@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<body>
+<div class="container">
     <mat-toolbar>
         <span class="toolbar">My Cards</span>
     </mat-toolbar>
@@ -11,11 +11,11 @@
             </mat-card-header>
             <img mat-card-image src={{card.picture}} alt="Photo of card">
             <mat-card-actions>
-              <button mat-raised-button color="accent">Sell for {{ card.price }}</button>
+              <button mat-raised-button color="accent" (click)="sellCard()">Sell for {{ card.price }}</button>
               <button mat-raised-button color="basic">Auction</button>
             </mat-card-actions>
           </mat-card>
     </div>
-</body>
+</div>
 
 

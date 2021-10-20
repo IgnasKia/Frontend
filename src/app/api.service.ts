@@ -7,6 +7,8 @@ import { retry, catchError } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 import { Card } from './card';
 import { UserReward } from './userReward';
+import { ChangeUserBalance } from './changeUserBalance';
+import { UserIdInCard } from './userIdInCard';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +67,12 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
+
+  public updateUserBalance(changeUserBalance: ChangeUserBalance, userId: any){
+    return this.httpClient.patch<ChangeUserBalance[]>(`${this.API_SERVER}/auth/user/${userId}`, changeUserBalance).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
   // -----------------------------USER SECTION END----------------------------- 
 
   // -----------------------------CARD SECTION START API-----------------------------   
@@ -82,6 +90,12 @@ export class ApiService {
 
   public getAllUserCards(userId: string){
     return this.httpClient.get<Card[]>(`${this.API_SERVER}/user/${userId}/cards`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public setUsersCard(cardId: any, userIdInCard: UserIdInCard){
+    return this.httpClient.patch<UserIdInCard[]>(`${this.API_SERVER}/cards/update/${cardId}`, userIdInCard).pipe(retry(1),
       catchError(this.handleError)
     );
   }
@@ -118,27 +132,23 @@ public getDecodedAccessToken(token: string): any {
     this.router.navigate(['/login']);
   }
 
+  public getCardByProbability() {
+    return this.httpClient.get(`${this.API_SERVER}/card/probability`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
   handleError(error: any) {
 
     let errorMessage = '';
- 
     if (error.error instanceof ErrorEvent) {
- 
       // client-side error
- 
       errorMessage = `Error: ${error.error.message}`;
- 
     } else {
- 
       // server-side error
- 
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
- 
     }
- 
     window.alert(errorMessage);
- 
     return throwError(errorMessage);
- 
   }
 }

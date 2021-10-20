@@ -1,0 +1,9 @@
+div.container {
+    background:linear-gradient(to bottom, #333333, #e9d362);
+    display: flex;
+    justify-content: center;
+  }
+
+h1 {
+    text-align: center;
+}

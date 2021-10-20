@@ -9,12 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserElement {
   username: string;
 }
-
 interface Rarity {
   value: string;
   viewValue: string;
 }
-
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',

@@ -4,4 +4,5 @@ export class Card {
     picture?: string;
     price: number;
     rarity: string;
+    userid: [];
 }

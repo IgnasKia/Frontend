@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RoleDialogComponent } from './role-dialog/role-dialog.component';
+import { ChestOpenComponent } from './chest-open/chest-open.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RoleDialogComponent } from './role-dialog/role-dialog.component';
     NotFoundComponent,
     NavbarComponent,
     AdminPanelComponent,
-    RoleDialogComponent
+    RoleDialogComponent,
+    ChestOpenComponent
   ],
   imports: [
     BrowserModule,

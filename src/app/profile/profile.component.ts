@@ -32,6 +32,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }));
   } 
 
+  sellCard() {
+    if(confirm("Are you sure you want to sell this card?")) {
+      console.log("Successfuly");
+    }
+  }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
