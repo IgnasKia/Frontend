@@ -32,9 +32,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }));
   } 
 
-  sellCard() {
+  sellCard(cardId: string, price: number) {
     if(confirm("Are you sure you want to sell this card?")) {
-      console.log("Successfuly");
+      console.log(cardId);
+      console.log(this.user._id);
+      this.apiService.sellCard(cardId, {"userid": this.user._id}).subscribe();
+      this.apiService.updateUserBalance({ "balance": this.user.balance+price},this.user._id).subscribe();
+      this.getUserData();
     }
   }
 

@@ -16,7 +16,7 @@ import { User } from '../user';
 export class HomeComponent implements OnInit, OnDestroy {
 
   time = moment();
-  casePrice = 50; 
+  casePrice = 40; 
   card: any;
   dailyReward = 20;
   private subscriptions = new Subscription();

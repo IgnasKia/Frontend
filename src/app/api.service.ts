@@ -100,6 +100,17 @@ export class ApiService {
     );
   }
 
+  public sellCard(cardId: any, userIdInCard: UserIdInCard) {
+    return this.httpClient.patch<UserIdInCard[]>(`${this.API_SERVER}/user/delete/cards/${cardId}`, userIdInCard).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  // public getCountCard(cardId: any, userIdInCard: UserIdInCard) {
+  //   return this.httpClient.patch<UserIdInCard[]>(`${this.API_SERVER}/user/delete/cards/${cardId}`, userIdInCard).pipe(retry(1),
+  //     catchError(this.handleError)
+  //   );
+  // }
 // -----------------------------CARD SECTION START-----------------------------
 
 
