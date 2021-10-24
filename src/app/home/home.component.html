@@ -1,15 +1,10 @@
 <app-navbar></app-navbar>
-<head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-  </head>
-<body>
+
+<div class="body">
     <mat-toolbar>
         <span class="toolbar">DAILY REWARD</span>
     </mat-toolbar>
-<div class="reward-card">
+<div class="flex-card">
         <mat-card class="example-card">
             <mat-card-title>
             </mat-card-title>
@@ -17,9 +12,9 @@
               <div mat-card-avatar class="example-header-image"></div>
             </mat-card-header>
             <div class="container">
-                <img mat-card-image src="https://agma.io/img/buycoins/payeboland.zard.coin.png" alt="Photo of daily reward" class="image" (click)="updateUsersLastRewardDate(currentUser._id)">
+                <img mat-card-image src="https://lh3.googleusercontent.com/proxy/yHbYR5JWP5fnDJ1olcT-hABt6Lewxi8OK2epOTG0kEorpulOUBMV8_xV99DnhizrGJzYUaMpPM7Bfv0eF-ob3CZLyYZgFvXV86AzL0Feg2_1EVecS6x2eaAz2yR-" alt="Photo of daily reward" class="image" (click)="updateUsersLastRewardDate(currentUser._id)">
                 <div class="middle">
-                    <button mat-raised-button color="basic" class="reward-button" (click)="updateUsersLastRewardDate(currentUser._id)">Take daily reward</button>
+                    <button mat-raised-button color="basic" class="picture-button" (click)="updateUsersLastRewardDate(currentUser._id)">Take daily reward</button>
                 </div>
             </div>
             <mat-card-actions>
@@ -34,6 +29,24 @@
     <span class="toolbar">CASES</span>
 </mat-toolbar>
 
-<button mat-raised-button color="basic" class="reward-button" (click)="openDialog()">Open Case</button>
+<div class="flex-card">
+    <mat-card class="example-card">
+        <mat-card-title>
+        </mat-card-title>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <div class="container">
+            <img mat-card-image src="https://img.g2a.com/500x500/1x1x0/pokemon-tcg-celebrations-collector-chest/a1681a712c0c4440aaf6956a">
+            <div class="middle">
+                <button mat-raised-button color="basic" class="picture-button" (click)="openDialog()">Open Case for {{casePrice}}</button>
+            </div>
+        </div>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</div>
 
-</body>
+
+
+</div>

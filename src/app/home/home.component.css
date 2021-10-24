@@ -1,9 +1,10 @@
-body {
+div.body {
     background:linear-gradient(to bottom, #333333, #e9d362);
   }
 
 .example-card {
     max-width: 350px;
+    margin: 10px;
   }
   
   .example-header-image {
@@ -14,7 +15,7 @@ body {
     background:linear-gradient(to bottom, #333333, #e9d362);
 }
 
-.mat-card-actions, div.reward-card{
+.mat-card-actions, div.flex-card{
     display: flex;
     justify-content: center;
 }
@@ -27,7 +28,7 @@ mat-toolbar {
     background: rgb(224, 182, 75);
 }
 
-.reward-button {
+.picture-button {
     width: 200px;
     height: 60px;
     background-color: rgb(224, 182, 75) ;
