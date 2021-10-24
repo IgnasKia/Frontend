@@ -15,7 +15,8 @@ import { UserIdInCard } from './userIdInCard';
 })
 export class ApiService {
 
-  API_SERVER = "http://localhost:3000";
+  API_SERVER = "https://pokemon-cards-application.herokuapp.com";
+  // environment.backendUrl
 
   constructor(
     private httpClient: HttpClient,
