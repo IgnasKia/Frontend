@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 
@@ -11,8 +11,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   user: any;
   subscription: Subscription;
-  balance = 0;
   constructor(public apiService: ApiService) { }
+
+  @Input() balance = 0; // decorate the property with @Input()
 
   ngOnInit(): void {
     try {

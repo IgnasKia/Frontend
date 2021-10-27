@@ -8,21 +8,23 @@ import { ApiService } from '../api.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-
+  currentBalance: number;
   cards: any;
   user: any;
   userId: string;
   private subscriptions = new Subscription();
   constructor(private apiService: ApiService) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void{
      this.getUserData();
   }
 
   getUserData(){
     this.subscriptions.add(this.apiService.getUser().subscribe( data => {
       this.user = data;
+      this.currentBalance = this.user.balance;
       this.getUserCards(this.user._id);
+      console.log(this.user.balance);
     }));
   }
 
@@ -32,13 +34,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }));
   } 
 
+  sellUserCard(cardId: string, userId: string) {
+    this.subscriptions.add(this.apiService.sellCard(cardId, {"userid": userId }).subscribe());
+  }
+
+  updateUserBalance(price: number, userId: string){
+    this.subscriptions.add(this.apiService.updateUserBalance({ "balance": this.user.balance+price},userId).subscribe( () => this.getUserData()));
+  }
+
   sellCard(cardId: string, price: number) {
     if(confirm("Are you sure you want to sell this card?")) {
-      console.log(cardId);
-      console.log(this.user._id);
-      this.apiService.sellCard(cardId, {"userid": this.user._id}).subscribe();
-      this.apiService.updateUserBalance({ "balance": this.user.balance+price},this.user._id).subscribe();
-      this.getUserData();
+      this.sellUserCard(cardId, this.user._id);
+      this.updateUserBalance(price, this.user._id);
     }
   }
 
