@@ -16,7 +16,6 @@ import { UserIdInCard } from './userIdInCard';
 export class ApiService {
 
   API_SERVER = "https://pokemon-cards-application.herokuapp.com";
-  // environment.backendUrl
 
   constructor(
     private httpClient: HttpClient,
@@ -107,11 +106,6 @@ export class ApiService {
     );
   }
 
-  // public getCountCard(cardId: any, userIdInCard: UserIdInCard) {
-  //   return this.httpClient.patch<UserIdInCard[]>(`${this.API_SERVER}/user/delete/cards/${cardId}`, userIdInCard).pipe(retry(1),
-  //     catchError(this.handleError)
-  //   );
-  // }
 // -----------------------------CARD SECTION START-----------------------------
 
 

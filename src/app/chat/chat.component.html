@@ -1,0 +1,8 @@
+<app-navbar [balance]="currentBalance"></app-navbar>
+<div>
+    <p *ngFor="let msg of messages"><strong>{{ msg.sender }}:</strong> {{ msg.message }}</p>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <input type="text" ngModel name="message" required>
+        <button [disabled]="!form.valid" type="submit"> send message</button>
+    </form>
+</div>

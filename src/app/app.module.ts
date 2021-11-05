@@ -21,6 +21,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 import { ChestOpenComponent } from './chest-open/chest-open.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ChatComponent } from './chat/chat.component';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { ChestOpenComponent } from './chest-open/chest-open.component';
     NavbarComponent,
     AdminPanelComponent,
     RoleDialogComponent,
-    ChestOpenComponent
+    ChestOpenComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { ChestOpenComponent } from './chest-open/chest-open.component';
     HttpClientModule,
     MyMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [AuthGuard, ApiService,{
     provide: HTTP_INTERCEPTORS,
