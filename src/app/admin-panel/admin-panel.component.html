@@ -81,7 +81,11 @@
                         </mat-error>
                      </mat-error>
                </mat-form-field>
-      
+
+               <div *ngIf="img_source">
+                  <img src={{img_source}} alt="preview">
+               </div>
+
                <mat-form-field class="full-width">
                   <mat-label>Price</mat-label>
                   <input  matInput  placeholder="Price" id="price" type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
@@ -109,7 +113,9 @@
                <mat-card-actions>
                    <button mat-raised-button type="submit" color="primary">Create</button>
                </mat-card-actions>
+               
             </form>
+            <button mat-raised-button (click)="previewImage()" color="basic">Preview Image</button>
          </mat-card-content>
       </mat-card>    
 

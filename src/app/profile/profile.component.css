@@ -11,7 +11,7 @@ div.body {
     background-size: cover;
 }
 
-mat-card-actions, mat-card-header{
+mat-card-actions{
     display: flex;
     justify-content: space-between;
 }
@@ -43,4 +43,12 @@ span.toolbar {
 
 mat-toolbar {
     background: rgb(224, 182, 75);
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: 200px;
+    margin: auto;
 }

@@ -9,11 +9,21 @@ export class ChatService {
 
   constructor( private socket: Socket) { }
 
-  sendMessage( user: string, text: string,): void {
-    this.socket.emit('sendMessage', { sender: user, message: text});
+  sendMessage( user: string, roomName: string, text: string): void {
+    this.socket.emit('sendMessage', { sender: user, room: roomName, message: text});
   }
 
   getNewMessage(): Observable<string> {
     return this.socket.fromEvent<string>('newMessage');
   }
+
+  joinRoom(room: string, user: any){
+    this.socket.emit('joinRoom', room, user);
+  }
+
+  leaveRoom(room: string) {
+    this.socket.emit('leaveRoom', room);
+  }
+
+
 }

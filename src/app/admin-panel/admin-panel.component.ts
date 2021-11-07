@@ -29,6 +29,8 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   currentUser: any = [];
   submitted = false;
   private subscriptions = new Subscription();
+
+  img_source: string;
   
   constructor(private apiService: ApiService, public dialog: MatDialog, private fb: FormBuilder, private _snackBar: MatSnackBar) {}
 
@@ -113,6 +115,10 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
       duration: 3000,
       verticalPosition: 'top'
     });
+  }
+
+  previewImage() {
+    this.img_source = this.cardCreateForm.value.picture;
   }
 
 

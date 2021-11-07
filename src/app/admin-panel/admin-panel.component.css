@@ -31,3 +31,9 @@ mat-toolbar {
   background: rgb(224, 182, 75);
 }
   
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
