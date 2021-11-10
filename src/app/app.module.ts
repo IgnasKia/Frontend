@@ -23,6 +23,7 @@ import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 import { ChestOpenComponent } from './chest-open/chest-open.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from './chat/chat.component';
+import { UserComponent } from './user/user.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
@@ -39,7 +40,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {transp
     AdminPanelComponent,
     RoleDialogComponent,
     ChestOpenComponent,
-    ChatComponent
+    ChatComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

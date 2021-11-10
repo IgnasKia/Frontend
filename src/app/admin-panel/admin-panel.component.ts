@@ -73,7 +73,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   }
 
   getCurrentUser(){
-    this.subscriptions.add(this.apiService.getUser().subscribe( data => {
+    this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
       this.currentUser = data;
     }));
   }

@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     try {
-      this.subscription = this.apiService.getUser().subscribe( data => {
+      this.subscription = this.apiService.getCurrentUserData().subscribe( data => {
         this.user = data;
         this.balance = this.user.balance;
       });

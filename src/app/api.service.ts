@@ -35,10 +35,16 @@ export class ApiService {
     );
   }
 
-  public getUser(){
+  public getCurrentUserData(){
     const token = this.getToken();
     let tokenInfo = this.getDecodedAccessToken(token!); // decode token
     let userId = tokenInfo._id; // get user _id from token
+    return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/user/${userId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public getUserById(userId: string){
     return this.httpClient.get<User[]>(`${this.API_SERVER}/auth/user/${userId}`).pipe(retry(1),
       catchError(this.handleError)
     );

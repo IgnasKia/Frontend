@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from './admin.guard';
 import { ChatComponent } from './chat/chat.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -17,9 +18,10 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
   {path: "users", component: UsersComponent, canActivate: [AuthGuard]},
+  {path: "user/:id", component: UserComponent, canActivate: [AuthGuard]},
   {path: "admin", component: AdminPanelComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: '404', component: NotFoundComponent},
-  {path: "chat/connections", component: ChatComponent},
+  {path: "chat/connections", component: ChatComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/404'}
 ];
 

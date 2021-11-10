@@ -8,18 +8,28 @@ import { ApiService } from '../api.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-
+  currentBalance: number;
   users: any;
-  subscription: Subscription;
+  private subscriptions = new Subscription();
   constructor(private apiService: ApiService) { }
+  userData: any;
+  currentUserName: string;
 
   ngOnInit(): void {
-    this.subscription = this.apiService.getUsers().subscribe( data => {
+    this.subscriptions.add(this.apiService.getUsers().subscribe( data => {
       this.users = data;
-    });
+    }));
   }
 
+  getUserData(){
+    this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
+      this.userData = data;
+      this.currentBalance = this.userData.balance;
+      this.currentUserName = this.userData.username;
+    }));
+  }
+  
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }

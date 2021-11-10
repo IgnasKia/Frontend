@@ -1,7 +1,23 @@
-<app-navbar></app-navbar>
+<app-navbar [balance]="currentBalance"></app-navbar>
 <mat-toolbar>
     <span class="toolbar">Users</span>
 </mat-toolbar>
-<mat-card class="example-card" *ngFor="let users of users">
-    <mat-card-title>{{ users.username }}</mat-card-title>
-  </mat-card>
+
+<div *ngIf="users" class="cards">
+
+    <mat-card class="example-card" *ngFor="let user of users">
+
+        <mat-card-header>
+          <h1>user:{{ user.username }} </h1>
+        </mat-card-header>
+        <mat-card-content>
+            <h2 class="card-name"> has:{{ user.cardQuantity }} cards</h2>
+        </mat-card-content>
+        <mat-card-actions>
+            <a routerLink="/user/{{user._id}}">
+                <button mat-raised-button color="basic">View profile</button>
+            </a>
+        </mat-card-actions>
+      </mat-card>
+
+</div>

@@ -1,12 +1,18 @@
-.example-card {
-    display:inline-flex;
-    background-color: DodgerBlue;
-    max-width: 350px;
-    margin: 10px;
-}
+
 span.toolbar {
     margin: 0 auto;
 }
 mat-toolbar {
     background: rgb(224, 182, 75);
+}
+
+.example-card {
+    max-width: 250px;
+    margin: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+
 }

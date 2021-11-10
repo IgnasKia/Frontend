@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getCurrentUser(){
-    this.subscriptions.add(this.apiService.getUser().subscribe( data => {
+    this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
       this.currentUser = data;
       this.currentBalance = this.currentUser.balance;
     }));
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   openDialog() {
     if(this.currentUser.balance-this.casePrice>=0 ) {
       if (confirm('Are you sure you want to open this case?')) {
-        this.subscriptions.add(this.apiService.updateUserBalance({ "balance": this.currentUser.balance - this.casePrice} , this.currentUser._id).subscribe( () => {
+        this.subscriptions.add(this.apiService.updateUserBalance({ "balance": this.currentUser.balance - this.casePrice, "cardQuantity": this.currentUser.cardQuantity+1} , this.currentUser._id ).subscribe( () => {
           this.getCurrentUser();
         }));
         

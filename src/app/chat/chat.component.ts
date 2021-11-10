@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor( private chatService : ChatService, private apiService: ApiService) { }
 
   getCurrentUser(){
-    this.subscriptions.add(this.apiService.getUser().subscribe( data => {
+    this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
       this.currentUser = data;
       this.currentBalance = this.currentUser.balance;
     }));
