@@ -17,13 +17,14 @@ export class ChatService {
     return this.socket.fromEvent<string>('newMessage');
   }
 
-  joinRoom(room: string, user: any){
-    this.socket.emit('joinRoom', room, user);
+  joinRoom(roomName: string, user: string) {
+    this.socket.emit('joinRoom', { room: roomName, sender: user});
   }
 
-  leaveRoom(room: string) {
-    this.socket.emit('leaveRoom', room);
+  leaveRoom(roomName: string, user: string) {
+    this.socket.emit('leaveRoom', { room: roomName, sender: user});
   }
-
 
 }
+
+

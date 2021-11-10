@@ -1,8 +1,6 @@
-import { generateAnalysis } from '@angular/compiler-cli/src/ngtsc/indexer';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { mergeScan } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 import { ChatService } from '../chat.service';
 
@@ -13,10 +11,6 @@ import { ChatService } from '../chat.service';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('form') form: NgForm;
-
-  count: number;
-
-  newMessage$: Observable<string>;
 
   messages: any = { 
     general: Array(),
@@ -29,14 +23,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   currentUser: any = [];
 
-  rooms: {
-    general: false,
-    trading: false
-  };
-  activeRoom: string = 'general';
-  changeRooms: string;
-  joinedUser: any = [];
-  
+  activeRoom: string = 'none';
+
   constructor( private chatService : ChatService, private apiService: ApiService) { }
 
   getCurrentUser(){
@@ -48,10 +36,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit(){
     this.getCurrentUser();
-    this.chatService.joinRoom(this.activeRoom, this.currentUser.username);
-    this.chatService.getNewMessage().subscribe((message: any) => {      
+    this.subscriptions.add(this.chatService.getNewMessage().subscribe((message: any) => {      
       this.messages[message.room].push(message);
-    });
+    }));
+    
   }
 
   onSubmit(){
@@ -64,16 +52,18 @@ export class ChatComponent implements OnInit, OnDestroy {
   roomClicked(room: string) {
     this.activeRoom = room;
     this.chatService.joinRoom(this.activeRoom, this.currentUser.username);
+    this.chatService.sendMessage('SERVER', this.activeRoom, `${this.currentUser.username} joined in this room` );
 
   }
 
   leaveRoom() {
-    this.chatService.leaveRoom(this.activeRoom);
+    this.chatService.leaveRoom(this.activeRoom,  this.currentUser.username);
+    this.chatService.sendMessage('SERVER', this.activeRoom, `${this.currentUser.username} left in this room` );
+    this.activeRoom = "none";
   }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
-
 
 }
