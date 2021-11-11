@@ -25,7 +25,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from './chat/chat.component';
 import { UserComponent } from './user/user.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {transports: ['websocket', 'polling', 'flashsocket']} };
+const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokuapp.com', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
 @NgModule({
   declarations: [
