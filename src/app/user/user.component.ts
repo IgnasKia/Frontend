@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
+import { TradeCardsComponent } from '../trade-cards/trade-cards.component';
 
 @Component({
   selector: 'app-user',
@@ -11,17 +14,17 @@ import { ApiService } from '../api.service';
 export class UserComponent implements OnInit {
   currentBalance: number;
   private subscriptions = new Subscription();
-  logggedUser: any;
+  loggedUser: any;
   userCards: any;
   user: any;
-  
+  id: string;
   userName: string;
-  constructor( private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor( private apiService: ApiService, private route: ActivatedRoute, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    const id = String(this.route.snapshot.paramMap.get('id'));
-    this.getUser(id);
-    this.getUserCards(id);
+    this.id = String(this.route.snapshot.paramMap.get('id'));
+    this.getUser(this.id);
+    this.getUserCards(this.id);
     this.getCurrentUser();
   }
 
@@ -40,8 +43,19 @@ export class UserComponent implements OnInit {
 
   getCurrentUser(){
     this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
-      this.logggedUser = data;
-      this.currentBalance = this.logggedUser.balance;
+      this.loggedUser = data;
+      this.currentBalance = this.loggedUser.balance;
     }));
   }
+
+
+  openDialog(userId: string, cardId: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = [this.id, cardId];
+    const dialogRef = this.dialog.open(TradeCardsComponent, dialogConfig); 
+
+    dialogRef.afterClosed().subscribe(
+      () => this.getUserCards(this.id))
+  };
+  
 }

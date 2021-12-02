@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   user: any;
   subscription: Subscription;
+  requestedTrade: any = [];
+
   constructor(public apiService: ApiService) { }
 
   @Input() balance = 0; // decorate the property with @Input()
@@ -20,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.subscription = this.apiService.getCurrentUserData().subscribe( data => {
         this.user = data;
         this.balance = this.user.balance;
+        this.getRequestTradeCount(this.user._id);
       });
     } catch (error) {
       console.log(error);
@@ -28,6 +31,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  getRequestTradeCount(userId: string){
+    this.apiService.getRequestedTrades(userId).subscribe(data => {
+      this.requestedTrade = data;
+      console.log(this.requestedTrade.length);
+    })
   }
 
 }

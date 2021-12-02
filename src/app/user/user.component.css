@@ -13,7 +13,7 @@ div.body {
 
 mat-card-actions{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 mat-card {
@@ -51,4 +51,8 @@ img {
     padding: 10px;
     width: 200px;
     margin: auto;
+}
+
+.description {
+    display: flex;
 }

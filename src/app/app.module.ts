@@ -24,6 +24,8 @@ import { ChestOpenComponent } from './chest-open/chest-open.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from './chat/chat.component';
 import { UserComponent } from './user/user.component';
+import { TradeCardsComponent } from './trade-cards/trade-cards.component';
+import { TradeHistoryComponent } from './trade-history/trade-history.component';
 
 const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokuapp.com', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
@@ -41,7 +43,9 @@ const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokua
     RoleDialogComponent,
     ChestOpenComponent,
     ChatComponent,
-    UserComponent
+    UserComponent,
+    TradeCardsComponent,
+    TradeHistoryComponent
   ],
   imports: [
     BrowserModule,

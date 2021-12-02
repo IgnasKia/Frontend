@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 import { Card } from './card';
+import { TempTrade } from './tempTrade';
 import { UserReward } from './userReward';
 import { ChangeUserBalance } from './changeUserBalance';
 import { UserIdInCard } from './userIdInCard';
@@ -15,7 +16,8 @@ import { UserIdInCard } from './userIdInCard';
 })
 export class ApiService {
 
-  API_SERVER = "https://pokemon-cards-application.herokuapp.com";
+  // API_SERVER = "https://pokemon-cards-application.herokuapp.com";
+  API_SERVER = "http://localhost:3000";
 
   constructor(
     private httpClient: HttpClient,
@@ -88,6 +90,12 @@ export class ApiService {
     );
   }
 
+  public getCardById(cardId: string){
+    return this.httpClient.get<Card[]>(`${this.API_SERVER}/cards/${cardId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
   public getAllCards(){
     return this.httpClient.get<Card[]>(`${this.API_SERVER}/cards`).pipe(retry(1),
       catchError(this.handleError)
@@ -111,6 +119,34 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
+// -----------------------------TRADE CARD SECTION START-----------------------------
+
+public createTempTrade(tempTrade: TempTrade){
+  return this.httpClient.post<TempTrade[]>(`${this.API_SERVER}/cards/trade/create`, tempTrade).pipe(retry(1),
+    catchError(this.handleError)
+  );
+}
+
+public getRequestedTrades(traderTwo: string){
+  return this.httpClient.get<TempTrade[]>(`${this.API_SERVER}/cards/trades/requested/${traderTwo}`).pipe(retry(1),
+    catchError(this.handleError)
+  );
+}
+
+public getCreatedTrades(traderOne: string){
+  return this.httpClient.get<TempTrade[]>(`${this.API_SERVER}/cards/trades/created/${traderOne}`).pipe(retry(1),
+    catchError(this.handleError)
+  );
+}
+
+public acceptTrade(tradeId: string, status: string, tempTrade: TempTrade){
+  return this.httpClient.patch<TempTrade[]>(`${this.API_SERVER}/cards/trade/${tradeId}/${status}`, tempTrade).pipe(retry(1),
+    catchError(this.handleError)
+  );
+}
+
+// -----------------------------TRADE CARD SECTION END-----------------------------
+
 
 // -----------------------------CARD SECTION START-----------------------------
 

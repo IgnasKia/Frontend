@@ -13,7 +13,7 @@ div.body {
 
 mat-card-actions{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 mat-card {
@@ -45,7 +45,7 @@ mat-toolbar {
     background: rgb(224, 182, 75);
 }
 
-img {
+#userCards {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
@@ -53,6 +53,23 @@ img {
     margin: auto;
 }
 
-.description {
-    display: flex;
+h1 {
+    text-align: center;
 }
+
+.card {
+    margin: auto;
+    border: 3px solid green;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 15%;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }

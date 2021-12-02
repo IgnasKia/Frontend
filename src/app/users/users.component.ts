@@ -19,13 +19,14 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.apiService.getUsers().subscribe( data => {
       this.users = data;
     }));
+
+    this.getUserData();
   }
 
   getUserData(){
     this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
       this.userData = data;
       this.currentBalance = this.userData.balance;
-      this.currentUserName = this.userData.username;
     }));
   }
   

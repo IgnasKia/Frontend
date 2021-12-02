@@ -1,0 +1,73 @@
+<app-navbar [balance]="currentBalance"></app-navbar>
+
+<div class="body">
+    <mat-toolbar>
+        <span class="toolbar">Requested trades</span>
+    </mat-toolbar>
+
+    <div *ngIf="requestedTrades; else noRequestedTrades" class="container">
+        <div *ngFor="let rTrade of requestedTrades" class="trade-box">
+            <button mat-raised-button color="basic" (click)="acceptTrade(rTrade._id)" style="background-color: #4CAF50;">Accept</button>
+            
+            <div *ngFor="let card of array">
+                <div *ngIf="rTrade.traderOneCardId == card._id ">
+                    <div class="gallery">
+                        <div class="desc"><b>Into this card:</b></div>
+                          <img src="{{card.picture}}"  width="600" height="400">
+                        <div class="desc">{{card.name}} 
+                            <h4>Value: <b>{{card.price}}</b></h4>
+                            <h4><b>{{card.rarity}}</b></h4></div>
+                      </div>
+                </div>
+                <div *ngIf="rTrade.traderTwoCardId == card._id ">
+                    <div class="gallery">
+                        <div class="desc"><b>My card:</b></div>
+                          <img src="{{card.picture}}"  width="600" height="400">
+                        <div class="desc">{{card.name}} 
+                            <h4>Value: <b>{{card.price}}</b></h4>
+                            <h4><b>{{card.rarity}}</b></h4></div>
+                      </div>
+                </div>
+            </div>
+            <button mat-raised-button color="basic" (click)="cancelTrade(rTrade._id)" style="background-color: #f35c52;">Cancel</button>
+        </div>
+    </div>
+    <ng-template #noRequestedTrades><h1 style="text-align: center;">No one requested a trade to you yet.</h1></ng-template>
+
+    <mat-toolbar>
+        <span class="toolbar">My created trades</span>
+    </mat-toolbar>
+
+    <div *ngIf="createdTrades; else noCreatedTrades" class="container">
+
+        <div *ngFor="let cTrade of createdTrades" class="trade-box">
+            
+            <div *ngFor="let card of array">
+                <div *ngIf="cTrade.traderOneCardId == card._id ">
+                    <div class="gallery">
+                        <div class="desc"><b>My card:</b></div>
+                          <img src="{{card.picture}}"  width="600" height="400">
+                        <div class="desc">{{card.name}} 
+                            <h4>Value: <b>{{card.price}}</b></h4>
+                            <h4><b>{{card.rarity}}</b></h4></div>
+                      </div>
+                </div>
+                <div *ngIf="cTrade.traderTwoCardId == card._id ">
+                    <div class="gallery">
+                        <div class="desc"><b>Into this card:</b></div>
+                          <img src="{{card.picture}}"  width="600" height="400">
+                        <div class="desc">{{card.name}}
+                            <h4>Value: <b>{{card.price}}</b></h4>
+                        <h4><b>{{card.rarity}}</b></h4>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <button mat-raised-button color="basic" (click)="cancelTrade(cTrade._id)" style="background-color: #f35c52;">Cancel</button>
+        </div>
+
+    </div>
+    <ng-template #noCreatedTrades><h1 style="text-align: center;">Currently there are no trades that you have created.</h1> </ng-template>
+
+</div>
+

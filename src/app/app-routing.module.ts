@@ -11,6 +11,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from './admin.guard';
 import { ChatComponent } from './chat/chat.component';
 import { UserComponent } from './user/user.component';
+import { TradeHistoryComponent } from './trade-history/trade-history.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "admin", component: AdminPanelComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: '404', component: NotFoundComponent},
   {path: "chat/connections", component: ChatComponent, canActivate: [AuthGuard]},
+  {path: "trade", component: TradeHistoryComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/404'}
 ];
 
