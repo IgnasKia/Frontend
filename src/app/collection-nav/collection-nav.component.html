@@ -1,0 +1,15 @@
+<app-navbar-general></app-navbar-general>
+<mat-toolbar>
+    <mat-toolbar-row>
+       <a mat-mini-fab mat-button class="white-icon-button" href="/collection/home">
+        <mat-icon class="white-icon">home</mat-icon>
+       </a>
+       <a mat-button routerLink="/collection/profile" *ngIf="apiService.loggedIn()">My collection</a>
+       <a mat-button routerLink="/collection/users" *ngIf="apiService.loggedIn()">Users</a>
+       <a mat-button routerLink="/collection/catalogue" *ngIf="apiService.loggedIn()">Catalogue</a>
+       <a mat-button routerLink="/collection/chat" *ngIf="apiService.loggedIn()">Chat</a>
+       <a mat-button routerLink="/collection/admin" *ngIf="apiService.loggedIn() && apiService.isAdmin()">Admin Panel</a>
+       <span class="spacer"></span>
+       <a mat-button color="warn" routerLink="/login" *ngIf="apiService.loggedIn()" (click)="apiService.logoutUser()">Logout</a>
+    </mat-toolbar-row>
+  </mat-toolbar>

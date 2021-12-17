@@ -1,0 +1,27 @@
+body {
+  background:linear-gradient(to bottom, #ef9273, #fef9f8);
+}
+
+.file-input {
+  display: none;
+}
+
+span.toolbar {
+  margin: 0 auto;
+}
+
+mat-toolbar {
+  background: black;
+}
+
+button.create-coin {
+  position: absolute;
+  right: 50px;
+  margin: 10px;
+}
+
+.custom-modalbox {
+  mat-dialog-container {
+      padding: 0;
+  }
+}

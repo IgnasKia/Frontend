@@ -1,0 +1,10 @@
+span.toolbar {
+    margin: 0 auto;
+}
+mat-toolbar {
+    background: black;
+  }
+
+body {
+    background:linear-gradient(to bottom, #ef9273, #fef9f8);
+}

@@ -1,0 +1,44 @@
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+    background:linear-gradient(to bottom, #333333, #e9d362);
+  }
+  
+  .left:hover {
+    transform: scale(0.7);
+  }
+  
+  .right {
+    right: 0;
+    background:linear-gradient(to bottom, #ef9273, #fef9f8);
+  }
+
+  .right:hover {
+    transform: scale(0.7);
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+
+  .mat-button {
+    font-size:48px;
+  }

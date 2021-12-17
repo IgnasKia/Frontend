@@ -26,6 +26,17 @@ import { ChatComponent } from './chat/chat.component';
 import { UserComponent } from './user/user.component';
 import { TradeCardsComponent } from './trade-cards/trade-cards.component';
 import { TradeHistoryComponent } from './trade-history/trade-history.component';
+import { GameRealComponent } from './game-real/game-real.component';
+import { NavbarGeneralComponent } from './navbar-general/navbar-general.component';
+import { CollectionHomeComponent } from './collection-home/collection-home.component';
+import { CollectionNavComponent } from './collection-nav/collection-nav.component';
+import { UserCoinCollectionComponent } from './user-coin-collection/user-coin-collection.component';
+import { UsersCollectionComponent } from './users-collection/users-collection.component';
+import { CatalogueCollectionComponent } from './catalogue-collection/catalogue-collection.component';
+import { ChatCollectionComponent } from './chat-collection/chat-collection.component';
+import { AdminCollectionComponent } from './admin-collection/admin-collection.component';
+import { CollectionUserIdComponent } from './collection-user-id/collection-user-id.component';
+import { CreateCoinModalComponent } from './create-coin-modal/create-coin-modal.component';
 
 const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokuapp.com', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
@@ -45,7 +56,18 @@ const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokua
     ChatComponent,
     UserComponent,
     TradeCardsComponent,
-    TradeHistoryComponent
+    TradeHistoryComponent,
+    GameRealComponent,
+    NavbarGeneralComponent,
+    CollectionHomeComponent,
+    CollectionNavComponent,
+    UserCoinCollectionComponent,
+    UsersCollectionComponent,
+    CatalogueCollectionComponent,
+    ChatCollectionComponent,
+    AdminCollectionComponent,
+    CollectionUserIdComponent,
+    CreateCoinModalComponent
   ],
   imports: [
     BrowserModule,

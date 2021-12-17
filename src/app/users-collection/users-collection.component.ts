@@ -3,19 +3,18 @@ import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  selector: 'app-users-collection',
+  templateUrl: './users-collection.component.html',
+  styleUrls: ['./users-collection.component.css']
 })
-export class UsersComponent implements OnInit, OnDestroy {
-  currentBalance: number;
+export class UsersCollectionComponent implements OnInit, OnDestroy {
+
   users: any;
   private subscriptions = new Subscription();
   userData: any;
   currentUserName: string;
-  
+
   constructor(private apiService: ApiService) { }
-  
 
   ngOnInit(): void {
     this.subscriptions.add(this.apiService.getUsers().subscribe( data => {
@@ -28,11 +27,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   getUserData(){
     this.subscriptions.add(this.apiService.getCurrentUserData().subscribe( data => {
       this.userData = data;
-      this.currentBalance = this.userData.balance;
     }));
   }
   
   ngOnDestroy(){
     this.subscriptions.unsubscribe();
   }
+
 }

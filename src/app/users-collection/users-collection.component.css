@@ -3,7 +3,7 @@ span.toolbar {
     margin: 0 auto;
 }
 mat-toolbar {
-    background: rgb(224, 182, 75);
+    background: black;
 }
 
 .example-card {
@@ -17,5 +17,5 @@ mat-toolbar {
 
 }
 body {
-    background:linear-gradient(to bottom, #333333, #e9d362);
+    background:linear-gradient(to bottom, #ef9273, #fef9f8);
 }

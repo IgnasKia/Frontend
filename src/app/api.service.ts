@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from  './user';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
@@ -7,6 +7,7 @@ import { retry, catchError } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 import { Card } from './card';
 import { TempTrade } from './tempTrade';
+import { Coin } from './coin';
 import { UserReward } from './userReward';
 import { ChangeUserBalance } from './changeUserBalance';
 import { UserIdInCard } from './userIdInCard';
@@ -16,13 +17,29 @@ import { UserIdInCard } from './userIdInCard';
 })
 export class ApiService {
 
-  API_SERVER = "https://pokemon-cards-application.herokuapp.com";
-  // API_SERVER = "http://localhost:3000";
+  // API_SERVER = "https://pokemon-cards-application.herokuapp.com";
+  API_SERVER = "http://localhost:3000";
+  Numista_API_Key = "ZIIOBRaeSzUc75TddyuslnAHhP5Y4wr9H46hR1nW";
 
   constructor(
     private httpClient: HttpClient,
     private router: Router
   ) { }
+  // -----------------------------
+  public getSomething(){
+    return this.httpClient.get(`https://api.numista.com/api/v2/coins?lang=en&q=Lithuania&issuer=lituanie&page=1&count=5`, { headers: new HttpHeaders().set("Numista-API-Key", "ZIIOBRaeSzUc75TddyuslnAHhP5Y4wr9H46hR1nW")}).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  public getCoin(coinId: number){
+    return this.httpClient.get(`https://api.numista.com/api/v2/coins/${coinId}?lang=en`, { headers: new HttpHeaders().set("Numista-API-Key", "ZIIOBRaeSzUc75TddyuslnAHhP5Y4wr9H46hR1nW")}).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+
+
 
   // -----------------------------USER SECTION START API----------------------------- 
   public register(user: User){
@@ -199,4 +216,59 @@ public getDecodedAccessToken(token: string): any {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
+
+  // -----------------------------CARD SECTION END-----------------------------
+
+  // -----------------------------COIN SECTION START-----------------------------
+
+  public createCoin(fileToUpload: any){
+
+    return this.httpClient.post(`${this.API_SERVER}/coins/upload`, fileToUpload).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public deleteCoin(publicId: string, coinId: string){
+    return this.httpClient.delete(`${this.API_SERVER}/coins/delete/${publicId}/${coinId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public updateCoin(publicId: string, coinId: string, fileToUpload: any){
+    return this.httpClient.put(`${this.API_SERVER}/coins/update/${publicId}/${coinId}`, fileToUpload).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public deleteUserIdCoin(coinId: string, coin: Coin){
+    return this.httpClient.patch(`${this.API_SERVER}/coins/user/delete/${coinId}`, coin).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public addUserIdCoin(coinId: string, coin: Coin){
+    return this.httpClient.patch(`${this.API_SERVER}/coins/user/add/${coinId}`, coin).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public getAllCoins(){
+    return this.httpClient.get<Coin[]>(`${this.API_SERVER}/coins`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public getCoinById(coinId: string){
+    return this.httpClient.get<Coin[]>(`${this.API_SERVER}/coins/${coinId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  public getUserCoins(coinId: string){
+    return this.httpClient.get<Coin[]>(`${this.API_SERVER}/coins/user/${coinId}`).pipe(retry(1),
+      catchError(this.handleError)
+    );
+  } 
+
+  // -----------------------------COIN SECTION END-----------------------------
 }

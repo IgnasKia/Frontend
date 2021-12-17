@@ -1,0 +1,7 @@
+.choice {
+    display: flex;
+    justify-content:center;
+}
+a {
+    margin: 100px;
+}

@@ -1,0 +1,18 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+a {
+    margin: 2px;
+    color: #ef9273;
+}
+.mat-toolbar {
+    background:#fef9f8;
+}
+.white-icon {
+    color: #fef9f8;
+}
+
+.white-icon-button {
+    background-color: #ef9273;
+}

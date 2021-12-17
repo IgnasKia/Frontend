@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         const savedPerson = JSON.parse(localStorage.getItem('tempToken')!);
         localStorage.setItem('token', savedPerson.accessToken);
         localStorage.removeItem('tempToken');
-        this.router.navigate(['/']);
+        this.router.navigate(['/choose']);
         console.log(this.loginForm.value);
       }
      )
