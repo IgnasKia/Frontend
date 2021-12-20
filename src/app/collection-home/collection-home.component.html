@@ -1,5 +1,55 @@
 <app-collection-nav></app-collection-nav>
 <body>
-    <p>collection-home works!</p>
+
+    <div class="home-introduction">
+
+        <div class="desc1">
+            <div class="transbox">
+                <h1 style="text-align: center;">Manage your Collection</h1>
+                <p>Keep track of the coins and banknotes in your collection. Your inventory is accessible online at any time.
+                   Store pictures and personal comments about your collectibles.
+                </p>
+            </div>
+        </div>
+
+        <div class="desc2">
+            <div class="transbox">
+                <h1 style="text-align: center;">Catalog of World Coins & Banknotes</h1>
+                <p>Learn about coins and paper money through the collaborative catalogue, covering all countries.
+                    The catalogue is built by the community.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="random-coins">
+        <mat-card style=" background:linear-gradient(to bottom, #ef9273, #fef9f8);">
+            <h1 style="text-align: center;"> Random Coins</h1>
+            <a href="/collection/catalogue" ><button mat-raised-button style="margin: auto; display: block;">Browse all collection</button></a>
+            <div class="coins">
+                <mat-card *ngFor='let coin of coins' class="coin-card">
+                    <img src="{{coin.picture}}" alt="">
+                    <mat-list>
+                       <h1>Country: {{coin.issuer}}</h1> 
+                       <mat-divider></mat-divider>
+                       <h1>Value: {{coin.value}}</h1>
+                       <mat-divider></mat-divider>
+                       <h1>Currency: {{coin.currency}}</h1>
+                       <mat-divider></mat-divider>
+                       <h1>Year: {{coin.year}}</h1>
+                       <mat-divider></mat-divider>
+                    </mat-list>
+                    <div class="card-button">
+                        <button mat-raised-button class="details-button" style="margin: auto; background-color: #ef9273; display: block;" (click)="openDialogMoreDetails(coin._id)">More details</button>
+                    </div>
+                </mat-card>
+                
+            </div>
+            
+        </mat-card>
+
+    </div>
+
+
 </body>
 

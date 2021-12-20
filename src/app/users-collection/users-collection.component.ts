@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-users-collection',
@@ -9,11 +10,11 @@ import { ApiService } from '../api.service';
 })
 export class UsersCollectionComponent implements OnInit, OnDestroy {
 
-  users: any;
+  users: User[];
   private subscriptions = new Subscription();
   userData: any;
   currentUserName: string;
-
+  
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {

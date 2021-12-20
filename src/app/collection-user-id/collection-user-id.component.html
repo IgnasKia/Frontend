@@ -1,8 +1,60 @@
 <app-collection-nav></app-collection-nav>
 <body>
     <mat-toolbar>
-        <span class="toolbar" style="color: #ef9273;">User: ....</span>
+        <span class="toolbar" style="color: #ef9273;">User {{username}}</span>
     </mat-toolbar>
-    <p>collection-user-id works!</p>
+    
+    <div *ngIf='coins'>
+
+        <pagination-controls (pageChange)="p = $event" style="margin: 2px;"></pagination-controls>
+        
+            <mat-drawer-container class="example-container">
+        
+                <mat-drawer mode="side" opened >
+                    <div style="margin:15px">
+                        <h1>Sort by:</h1>
+                        <mat-list>
+                            <button mat-stroked-button (click)="filterByYear()" style="margin: 5px;">Year</button>
+                            <mat-divider></mat-divider>
+                            <button mat-stroked-button (click)="filterByCountry()" style="margin: 5px;">Country</button>
+                            <mat-divider></mat-divider>
+                            <button mat-stroked-button (click)="filterByValue()" style="margin: 5px;">Value</button>
+                        </mat-list>
+                    </div>
+                    
+                </mat-drawer>
+        
+                <mat-drawer-content>
+        
+                    <div class="coins">
+                        <mat-card *ngFor='let coin of coins | paginate: { itemsPerPage: 12, currentPage: p }' class="coin-card">
+                            <img src="{{coin.picture}}" alt="">
+                            <mat-list>
+                               <h1>Country: {{coin.issuer}}</h1> 
+                               <mat-divider></mat-divider>
+                               <h1>Value: {{coin.value}}</h1>
+                               <mat-divider></mat-divider>
+                               <h1>Currency: {{coin.currency}}</h1>
+                               <mat-divider></mat-divider>
+                               <h1>Year: {{coin.year}}</h1>
+                               <mat-divider></mat-divider>
+                            </mat-list>
+                            <div class="card-button">
+                            <button mat-stroked-button color="primary" class="details-button" style="margin: auto; background-color: #ef9273; display: block;" (click)="openDialogMoreDetails(coin._id)">More details</button>
+                            <div style="margin: 5px;"></div>
+                            <button mat-raised-button color="primary" class="details-button" (click)="addToCollection(coin._id)" style="margin: auto;display: block;">Add to my collection</button>
+                        </div>
+                            
+                        </mat-card>
+                    </div>
+                    
+                </mat-drawer-content>
+                
+              </mat-drawer-container>
+        
+                <pagination-controls (pageChange)="p = $event" style="margin: 2px;" ></pagination-controls>
+        
+        </div>
+
 </body>
 

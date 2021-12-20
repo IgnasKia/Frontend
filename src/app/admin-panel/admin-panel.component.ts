@@ -47,9 +47,14 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
       Validators.minLength(4),
       Validators.maxLength(20)]
     ],
-        picture: ['', Validators.required ],
-        price: ['', Validators.required],
-        rarity: ['', Validators.required,]
+    issuer: ['', Validators.required ],
+    year: ['', Validators.required ],
+    value: ['', Validators.required ],
+    currency: ['', Validators.required ],
+    picture: ['', Validators.required ],
+    price: ['', Validators.required],
+    rarity: ['', Validators.required,],
+    comment: ['', Validators.required ]
   });
 
   openDialog(id: any) {
@@ -83,7 +88,6 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
       this.subscriptions.add(this.apiService.deleteUser(id)
     .subscribe(
       response => {
-        console.log(response);
         this.getUsers();
       },
       error => {
@@ -104,14 +108,13 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     }
 
     this.apiService.createCard(this.cardCreateForm.value).subscribe((result)=>{
-      console.log(result),
       this.openSnackBar();
       this.cardCreateForm.reset();
     });
   }
 
   openSnackBar() {
-    this._snackBar.open("New card has been created successfully", '', {
+    this._snackBar.open("New banknote has been created successfully", '', {
       duration: 3000,
       verticalPosition: 'top'
     });

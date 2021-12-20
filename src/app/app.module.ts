@@ -37,6 +37,8 @@ import { ChatCollectionComponent } from './chat-collection/chat-collection.compo
 import { AdminCollectionComponent } from './admin-collection/admin-collection.component';
 import { CollectionUserIdComponent } from './collection-user-id/collection-user-id.component';
 import { CreateCoinModalComponent } from './create-coin-modal/create-coin-modal.component';
+import { CoinDetailsComponent } from './coin-details/coin-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokuapp.com', options: {transports: ['websocket', 'polling', 'flashsocket']} };
 
@@ -67,7 +69,8 @@ const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokua
     ChatCollectionComponent,
     AdminCollectionComponent,
     CollectionUserIdComponent,
-    CreateCoinModalComponent
+    CreateCoinModalComponent,
+    CoinDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ const config: SocketIoConfig = { url: 'https://pokemon-cards-application.herokua
     MyMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    NgxPaginationModule
   ],
   providers: [AuthGuard, ApiService,{
     provide: HTTP_INTERCEPTORS,

@@ -1,7 +1,47 @@
-<h1>Congratulations you got: {{data.name | uppercase}}!!!</h1>
-<h2>Rarity of this card: {{data.rarity}}</h2>
-<div class="container">
-    <img src={{data.picture}} alt="card Picture">
-<div>
+<div class="body">
+    <h1>Congratulations you got: {{data.name | uppercase}}!!!</h1>
+    <h2>Rarity of this card: {{data.rarity}}</h2>
+    <div class="container">
+        <img src={{data.picture}} alt="card Picture">
+    <div>
+        <h1 style="text-align: center;"><b>Features</b></h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        <b>Country</b>
+                    </th>
+                    <td>
+                        {{data.issuer}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Year
+                    </th>
+                    <td>
+                        {{data.year}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Value
+                    </th>
+                    <td>
+                        {{data.value}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Currency
+                    </th>
+                    <td>
+                        {{data.currency}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
 
 

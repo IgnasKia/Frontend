@@ -36,7 +36,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   getRequestTradeCount(userId: string){
     this.apiService.getRequestedTrades(userId).subscribe(data => {
       this.requestedTrade = data;
-      console.log(this.requestedTrade.length);
     })
   }
 

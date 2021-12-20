@@ -1,0 +1,79 @@
+<body>
+    <div class="content" >
+        <div class="split-left" style="margin: 5px;">
+    
+            <img src="{{coin.picture}}" alt="" class="details-image">
+            
+            <div class="comments" *ngIf="coin.comment">
+                <h1 style="text-align: center;">Comments</h1>
+                {{coin.comment}}
+            </div>
+        </div>
+        
+      <div class="split-right" style="margin: 5px;">
+            <h1 style="text-align: center;"><b>Features</b></h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <b>Country</b>
+                        </th>
+                        <td>
+                            {{coin.issuer}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Year
+                        </th>
+                        <td>
+                            {{coin.year}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Value
+                        </th>
+                        <td>
+                            {{coin.value}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Currency
+                        </th>
+                        <td>
+                            {{coin.currency}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Composition
+                        </th>
+                        <td>
+                            {{coin.composition}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Weight
+                        </th>
+                        <td>
+                            {{coin.weight}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Shape
+                        </th>
+                        <td>
+                            {{coin.shape}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+      </div>
+    </div>
+    
+</body>

@@ -7,10 +7,6 @@
         
         <table mat-table [dataSource]="usersTable" class="mat-elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Position Column -->
             <ng-container matColumnDef="username" >
               <th mat-header-cell *matHeaderCellDef>	<mat-icon>account_circle</mat-icon> Username </th>
               <div><td mat-cell *matCellDef="let element"> {{element.username}} </td></div>
@@ -47,75 +43,152 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>        
     </mat-tab>
-    <mat-tab label="Cards">
+    <mat-tab label="Coins">
       
         <mat-card class="my-card">
           <mat-toolbar>
-             <span style="color: #ef9273;">Card creation</span>
+             <span style="color: #ef9273;">Coin creation</span>
          </mat-toolbar>
          <mat-card-content>
-            <form [formGroup]="cardCreateForm" (ngSubmit)="createCard()" >
-              
-               <mat-form-field class="full-width">
-                  <mat-label>Card Name</mat-label>
-                  <input  matInput  placeholder="Card Name" id="cardName" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
-                  <mat-error *ngIf="submitted && f.name.errors">
-                     <mat-error *ngIf="f.name.errors.required">
-                        Name is required
-                     </mat-error>
-                     <mat-error *ngIf="f.name.errors.minlength">
-                        Name  must be at least 4 characters
-                     </mat-error>
-                     <mat-error *ngIf="f.name.errors.maxlength">
-                        Name  must not exceed 20 characters
-                     </mat-error>
-                  </mat-error>
-               </mat-form-field>
 
-               <mat-form-field class="full-width">
-                  <mat-label>Picture link</mat-label>
-                  <input  matInput  placeholder="Picture" id="picture" type="text" formControlName="picture" [ngClass]="{ 'is-invalid': submitted && f.picture.errors }">
-                     <mat-error *ngIf="submitted && f.picture.errors">
-                        <mat-error *ngIf="f.picture.errors.required">
-                        Picture link is required
+            <form [formGroup]="uploadForm" (ngSubmit)="submit()">
+            <mat-card class="my-card">
+
+                <div class="form-group" style="margin: 10px;">
+                    <label for="file">Picture</label>
+                    <input 
+                        formControlName="file"
+                        id="file" 
+                        type="file" 
+                        class="form-control"
+                        (change)="onFileChange($event)">
+                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                        <div *ngIf="f.file.errors.required" style="color: red;">Picture is required.</div>
+                    </div>
+                </div>
+
+                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:150px; margin: 5px;">
+
+                <mat-divider></mat-divider>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="issuer" [ngClass]="{ 'is-invalid': submitted && f.issuer.errors }">
+                      <mat-option *ngFor="let issuers of issuerList" [value]="issuers">{{issuers}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && f.issuer.errors">
+                        <mat-error *ngIf="f.issuer.errors.required">
+                         Country is required
                         </mat-error>
                      </mat-error>
-               </mat-form-field>
+                  </mat-form-field>
 
-               <div *ngIf="img_source">
-                  <img src={{img_source}} alt="preview">
-               </div>
-
-               <mat-form-field class="full-width">
-                  <mat-label>Price</mat-label>
-                  <input  matInput  placeholder="Price" id="price" type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
-                  <mat-error *ngIf="submitted && f.price.errors">
-                     <mat-error *ngIf="f.price.errors.required">
-                        Price is required
+                 <mat-form-field class="full-width">
+                    <mat-label>Year</mat-label>
+                    <input  matInput  placeholder="Year" id="year" type="number" formControlName="year" [ngClass]="{ 'is-invalid': submitted && f.year.errors }">
+                    <mat-error *ngIf="submitted && f.year.errors">
+                       <mat-error *ngIf="f.year.errors.required">
+                          Year is required
+                       </mat-error>
+                       <mat-error *ngIf="f.year.errors.max">
+                        Year cannot exceed 2022
                      </mat-error>
-                  </mat-error>
-               </mat-form-field>
-
-               <mat-form-field appearance="fill">
-                  <mat-label>Rarity</mat-label>
-                  <mat-select name="role" formControlName="rarity" [ngClass]="{ 'is-invalid': submitted && f.rarity.errors }">
-                    <mat-option *ngFor="let rarity of rarity" [value]="rarity.value">
-                      {{rarity.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error *ngIf="submitted && f.rarity.errors">
-                     <mat-error *ngIf="f.rarity.errors.required">
-                        Rarity is required
+                     <mat-error *ngIf="f.year.errors.min">
+                        Year at least have to be 1
                      </mat-error>
-                  </mat-error>
-                </mat-form-field>  
-      
-               <mat-card-actions>
-                   <button mat-raised-button type="submit" color="primary">Create</button>
-               </mat-card-actions>
-               
+                    </mat-error>
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <mat-label>Value</mat-label>
+                    <input  matInput  placeholder="Value" id="value" type="number" formControlName="value" [ngClass]="{ 'is-invalid': submitted && f.value.errors }">
+                    <mat-error *ngIf="submitted && f.value.errors">
+                       <mat-error *ngIf="f.value.errors.required">
+                        Value is required
+                       </mat-error>
+                       <mat-error *ngIf="f.value.errors.max">
+                        Value must be less than 1000000
+                        </mat-error>
+                        <mat-error *ngIf="f.value.errors.min">
+                            Value must be at least 0.01
+                        </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+    
+                 <mat-form-field class="full-width">
+                    <mat-label>Currency</mat-label>
+                    <input  matInput  placeholder="Currency" id="currency" type="text" formControlName="currency" [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
+                    <mat-error *ngIf="submitted && f.currency.errors">
+                       <mat-error *ngIf="f.currency.errors.required">
+                        Currency is required
+                       </mat-error>
+                       <mat-error *ngIf="f.currency.errors.maxlength">
+                        Currency must not exceed 20 characters
+                       </mat-error>
+                       <mat-error *ngIf="f.currency.errors.minlength">
+                        Currency  must be at least 1 characters
+                       </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <mat-label>Composition</mat-label>
+                    <input  matInput  placeholder="Composition" id="composition" type="text" formControlName="composition" [ngClass]="{ 'is-invalid': submitted && f.composition.errors }">
+                    <mat-error *ngIf="submitted && f.composition.errors">
+                       <mat-error *ngIf="f.composition.errors.required">
+                        Composition is required
+                       </mat-error>
+                       <mat-error *ngIf="f.composition.errors.minlength">
+                        Composition  must be at least 3 characters
+                       </mat-error>
+                       <mat-error *ngIf="f.composition.errors.maxlength">
+                        Composition must not exceed 20 characters
+                       </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <mat-label>Weight(g)</mat-label>
+                    <input  matInput  placeholder="Weight" id="weight" type="number" formControlName="weight" [ngClass]="{ 'is-invalid': submitted && f.weight.errors }">
+                    <mat-error *ngIf="submitted && f.weight.errors">
+                       <mat-error *ngIf="f.weight.errors.required">
+                        Weight is required
+                       </mat-error>
+                       <mat-error *ngIf="f.weight.errors.max">
+                        Weight must not exceed 10000g
+                       </mat-error>
+                       <mat-error *ngIf="f.weight.errors.min">
+                        Weight must be at least 1g
+                       </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <mat-label>Shape</mat-label>
+                    <input  matInput  placeholder="Shape" id="shape" type="text" formControlName="shape" [ngClass]="{ 'is-invalid': submitted && f.shape.errors }">
+                    <mat-error *ngIf="submitted && f.shape.errors">
+                       <mat-error *ngIf="f.shape.errors.required">
+                        Shape is required
+                       </mat-error>
+                       <mat-error *ngIf="f.shape.errors.maxlength">
+                        Shape must not exceed 20 characters
+                       </mat-error>
+                       <mat-error *ngIf="f.shape.errors.minlength">
+                        Shape must be at least 3 characters
+                       </mat-error>
+                    </mat-error>
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <mat-label>Comment</mat-label>
+                    <textarea   matInput  placeholder="Comment" id="comment" formControlName="comment"></textarea>
+                 </mat-form-field>
+
+                 <button mat-raised-button color="primary" type="submit" style="margin: 5px;">Submit</button>
+                </mat-card>
+                
             </form>
-            <button mat-raised-button (click)="previewImage()" color="basic">Preview Image</button>
+
          </mat-card-content>
       </mat-card>    
 

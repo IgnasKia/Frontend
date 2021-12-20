@@ -1,5 +1,5 @@
 export class Coin {
-    id?: string;
+    _id?: string;
     picture?: string;
     issuer?: string;
     public_id?: string;

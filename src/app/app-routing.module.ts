@@ -20,6 +20,7 @@ import { CatalogueCollectionComponent } from './catalogue-collection/catalogue-c
 import { ChatCollectionComponent } from './chat-collection/chat-collection.component';
 import { AdminCollectionComponent } from './admin-collection/admin-collection.component';
 import { CollectionUserIdComponent } from './collection-user-id/collection-user-id.component';
+import { CoinDetailsComponent } from './coin-details/coin-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -38,7 +39,7 @@ const routes: Routes = [
   {path: "collection/users", component: UsersCollectionComponent, canActivate: [AuthGuard]},
   {path: "collection/catalogue", component: CatalogueCollectionComponent, canActivate: [AuthGuard]},
   {path: "collection/chat", component: ChatCollectionComponent, canActivate: [AuthGuard]},
-  {path: "collection/admin", component: AdminCollectionComponent, canActivate: [AuthGuard]},
+  {path: "collection/admin", component: AdminCollectionComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "collection/user/:id", component: CollectionUserIdComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/404'}
 ];

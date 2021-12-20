@@ -59,10 +59,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.registerForm.value, null, 2));
-    (this.apiService.register(this.registerForm.value)).subscribe((result)=>{
-      console.log(result);
-    });
+    (this.apiService.register(this.registerForm.value)).subscribe();
     this.router.navigate(['/login']);
   }
 

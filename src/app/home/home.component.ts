@@ -55,11 +55,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  getCardByProbability() {
-    this.subscriptions.add(this.apiService.getCardByProbability().subscribe( data => 
-      console.log(data)));
-  }
-
   openDialog() {
     if(this.currentUser.balance-this.casePrice>=0 ) {
       if (confirm('Are you sure you want to open this case?')) {

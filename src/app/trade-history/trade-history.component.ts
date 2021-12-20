@@ -47,7 +47,6 @@ export class TradeHistoryComponent implements OnInit {
           this.getTradingCard(this.requestedTrades[i].traderTwoCardId);
           
         }
-        console.log(this.array);
       } else {
         this.requestedTrades = null;
       }
@@ -64,7 +63,6 @@ export class TradeHistoryComponent implements OnInit {
           this.getTradingCard(this.createdTrades[i].traderTwoCardId);
           
         }
-        console.log(this.array);
       } else {
         this.createdTrades = null;
       }

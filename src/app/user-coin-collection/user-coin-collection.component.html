@@ -8,17 +8,54 @@
     <button mat-raised-button class="create-coin" (click)="openDialog()">Create coin</button>
   </div>
 
-  <!-- <input type="file" class="file-input"
-  (change)="onFileSelected($event)" #fileUpload>
+  <div *ngIf="coins">
+    <pagination-controls (pageChange)="p = $event" style="margin: 2px;"></pagination-controls>
+    <mat-drawer-container class="example-container">
 
-  <div class="file-upload">
+        <mat-drawer mode="side" opened >
+          
+            <div style="margin:15px">
+                <h1>Sort by:</h1>
+                <mat-list>
+                    <button mat-stroked-button (click)="filterByYear()" style="margin: 5px;">Year</button>
+                    <mat-divider></mat-divider>
+                    <button mat-stroked-button (click)="filterByCountry()" style="margin: 5px;">Country</button>
+                    <mat-divider></mat-divider>
+                    <button mat-stroked-button (click)="filterByValue()" style="margin: 5px;">Value</button>
+                </mat-list>
+            </div>
+            
+        </mat-drawer>
+        <mat-drawer-content>
 
-    {{fileName || "No file uploaded yet."}}
+            <div class="coins">
+                <mat-card *ngFor='let coin of coins | paginate: { itemsPerPage: 12, currentPage: p }' class="coin-card">
+                    <img src="{{coin.picture}}" alt="">
+                    <mat-list>
+                       <h1>Country: {{coin.issuer}}</h1> 
+                       <mat-divider></mat-divider>
+                       <h1>Value: {{coin.value}}</h1>
+                       <mat-divider></mat-divider>
+                       <h1>Currency: {{coin.currency}}</h1>
+                       <mat-divider></mat-divider>
+                       <h1>Year: {{coin.year}}</h1>
+                       <mat-divider></mat-divider>
+                    </mat-list>
+                    <div class="card-button">
+                    <button mat-stroked-button color="primary" class="details-button" style="margin: 5px;" (click)="openDialogMoreDetails(coin._id)">More details</button>
+                    <button mat-stroked-button color="warn" class="details-button" (click)="delete(coin._id)" style="margin: 5px;">Delete</button>
+                    </div>
+                    
+                </mat-card>
+            </div>
+            
+        </mat-drawer-content>
+        
+      </mat-drawer-container>
 
-    <button mat-mini-fab color="primary" class="upload-btn"
-    (click)="fileUpload.click()">
-    <mat-icon>attach_file</mat-icon>
-    </button>
-  </div> -->
+        <pagination-controls (pageChange)="p = $event" style="margin: 2px;" ></pagination-controls>
+
+    </div>
+  
 
 </body>

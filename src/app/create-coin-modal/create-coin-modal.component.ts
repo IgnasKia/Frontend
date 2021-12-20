@@ -97,7 +97,7 @@ export class CreateCoinModalComponent implements OnInit {
 
     this.uploadForm.reset();
     this.imageSrc = '';
-
+    window.location.reload();
     this.openSnackBar();
   }
   getCurrentUser(){

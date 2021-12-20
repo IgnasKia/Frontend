@@ -37,3 +37,9 @@ img {
   padding: 5px;
   width: 150px;
 }
+
+.my-banknote {
+  width: 800px;
+  margin: auto;
+  display: block;
+}

@@ -5,7 +5,7 @@
          <a mat-mini-fab mat-button href="/">
           <mat-icon>home</mat-icon>
          </a>
-         <a mat-stroked-button color="accent" routerLink="/profile" *ngIf="apiService.loggedIn()">My cards</a>
+         <a mat-stroked-button color="accent" routerLink="/profile" *ngIf="apiService.loggedIn()">My banknotes</a>
          <a mat-stroked-button color="accent" routerLink="/users" *ngIf="apiService.loggedIn()">Users</a>
          <a mat-stroked-button color="accent" routerLink="/chat/connections" *ngIf="apiService.loggedIn()">Chat</a>
          <a mat-stroked-button color="accent" routerLink="/trade" *ngIf="apiService.loggedIn()">Trade[{{requestedTrade.length}}]</a>

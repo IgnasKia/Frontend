@@ -11,9 +11,46 @@
           </div>
           <h3 class="card-rarity">{{card.rarity | uppercase}}</h3>
             <img mat-card-image src={{card.picture}} alt="Photo of card">
+           
+            <h1 style="text-align: center;"><b>Features</b></h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <b>Country</b>
+                        </th>
+                        <td>
+                            {{card.issuer}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Year
+                        </th>
+                        <td>
+                            {{card.year}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Real Value
+                        </th>
+                        <td>
+                            {{card.value}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Currency
+                        </th>
+                        <td>
+                            {{card.currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <mat-card-actions>
-              <button mat-raised-button color="accent" (click)="sellCard(card._id,card.price)">Sell for {{ card.price }}</button>
-              <button mat-raised-button color="basic">Auction</button>
+              <button mat-raised-button color="accent" (click)="sellCard(card._id,card.price)" style="margin: auto; display: block;">Sell for {{ card.price }}</button>
             </mat-card-actions>
           </mat-card>
     </div>

@@ -5,12 +5,8 @@ mat-toolbar {
     background: black;
   }
 
-body {
-    background:linear-gradient(to bottom, #ef9273, #fef9f8);
-}
 div.coins {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .coin-card {
@@ -22,12 +18,27 @@ img {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
-    width: 200px;
+    width: auto;
     margin: auto;
+    display: block;
 }
+
 
 button.details-button {
     margin: auto;
     display: block;
 }
 
+div.content {
+    display: flex;
+    justify-content: space-between;
+}
+div.split-right{
+    background: #dfeefb;
+    padding: 1em;
+}
+
+th{
+    text-align: left;
+    padding: 0.2em 0.5em 0.2em 0;
+}

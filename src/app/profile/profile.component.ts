@@ -24,14 +24,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.user = data;
       this.currentBalance = this.user.balance;
       this.getUserCards(this.user._id);
-      console.log(data);
     }));
   }
 
   getUserCards(userId: string) {
     this.subscriptions.add(this.apiService.getAllUserCards(userId).subscribe( data => {
       this.cards = data;
-      console.log(data);
     }));
   } 
 
@@ -40,7 +38,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   updateUserBalance(price: number, userId: string){
-    console.log(this.user.cardQuantity)
     this.subscriptions.add(this.apiService.updateUserBalance({ "balance": this.user.balance+price, "cardQuantity": this.user.cardQuantity-1}, userId).subscribe( () => this.getUserData()));
   }
 

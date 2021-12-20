@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', savedPerson.accessToken);
         localStorage.removeItem('tempToken');
         this.router.navigate(['/choose']);
-        console.log(this.loginForm.value);
       }
      )
   }

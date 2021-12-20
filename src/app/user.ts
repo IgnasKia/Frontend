@@ -1,5 +1,5 @@
 export class User {
-    id?: number;
+    _id?: number;
     accessToken?: string;
     username: string;
     password: string;
