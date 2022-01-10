@@ -12,6 +12,12 @@
                     <mat-error *ngIf="f.fullName.errors.required">
                        Full name is required
                     </mat-error>
+                    <mat-error *ngIf="f.fullName.errors.minlength">
+                     Full name must be at least 6 characters
+                  </mat-error>
+                  <mat-error *ngIf="f.fullName.errors.maxlength">
+                     Full name must not exceed 30 characters
+                  </mat-error>
                    </mat-error>
                 </mat-form-field>
      
@@ -41,6 +47,12 @@
                           <mat-error *ngIf="f.email.errors.email">
                              Email is invalid
                           </mat-error>
+                          <mat-error *ngIf="f.email.errors.minlength">
+                           Email must be at least 5 characters
+                        </mat-error>
+                        <mat-error *ngIf="f.email.errors.maxlength">
+                           Email must not exceed 100 characters
+                        </mat-error>
                        </mat-error>
                     </mat-form-field>
      

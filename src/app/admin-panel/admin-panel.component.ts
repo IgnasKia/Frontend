@@ -60,14 +60,19 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
       Validators.minLength(4),
       Validators.maxLength(20)]
     ],
-    issuer: ['', Validators.required ],
-    year: ['', Validators.required ],
-    value: ['', Validators.required ],
-    currency: ['', Validators.required ],
+    issuer: ['',
+    [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(150)]
+    ],
+    year: ['', [Validators.required, Validators.max(2022), Validators.min(1)]],
+    value: ['', [Validators.required, Validators.max(1000000), Validators.min(0.01)] ],
+    currency: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(1)] ],
     picture: ['', Validators.required ],
-    price: ['', Validators.required],
+    price: ['', [Validators.required, Validators.max(1000000), Validators.min(1)]],
     rarity: ['', Validators.required,],
-    comment: ['', Validators.required ]
+    comment: ['', [Validators.maxLength(1000), Validators.minLength(10)] ]
   });
 
   openDialog(id: any) {

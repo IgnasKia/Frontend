@@ -12,7 +12,7 @@
             <div *ngFor="let card of array">
                 <div *ngIf="rTrade.traderOneCardId == card._id ">
                     <div class="gallery">
-                        <div class="desc"><b>Into this card:</b></div>
+                        <div class="desc"><b>Into this banknote:</b></div>
                           <img src="{{card.picture}}"  width="600" height="400" class="img-fluid" alt="Responsive image">
                         <div class="desc">{{card.name}} 
                             <h4>Value: <b>{{card.price}}</b></h4>
@@ -21,7 +21,7 @@
                 </div>
                 <div *ngIf="rTrade.traderTwoCardId == card._id ">
                     <div class="gallery">
-                        <div class="desc"><b>My card:</b></div>
+                        <div class="desc"><b>My banknote:</b></div>
                           <img src="{{card.picture}}"  width="600" height="400" class="img-fluid" alt="Responsive image">
                         <div class="desc">{{card.name}} 
                             <h4>Value: <b>{{card.price}}</b></h4>
@@ -45,7 +45,7 @@
             <div *ngFor="let card of array">
                 <div *ngIf="cTrade.traderOneCardId == card._id ">
                     <div class="gallery">
-                        <div class="desc"><b>My card:</b></div>
+                        <div class="desc"><b>My banknote:</b></div>
                           <img src="{{card.picture}}"  width="600" height="400">
                         <div class="desc">{{card.name}} 
                             <h4>Value: <b>{{card.price}}</b></h4>
@@ -54,7 +54,7 @@
                 </div>
                 <div *ngIf="cTrade.traderTwoCardId == card._id ">
                     <div class="gallery">
-                        <div class="desc"><b>Into this card:</b></div>
+                        <div class="desc"><b>Into this banknote:</b></div>
                           <img src="{{card.picture}}"  width="600" height="400">
                         <div class="desc">{{card.name}}
                             <h4>Value: <b>{{card.price}}</b></h4>

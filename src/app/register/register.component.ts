@@ -17,7 +17,13 @@ export class RegisterComponent implements OnInit {
   constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router) { }
   
   registerForm = this.fb.group({
-    fullName: ['', Validators.required],
+        fullName: ['', 
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(30)
+          ] 
+        ],
         username: [
           '',
           [
@@ -26,7 +32,14 @@ export class RegisterComponent implements OnInit {
             Validators.maxLength(20)
           ]
         ],
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', 
+          [
+            Validators.required, 
+            Validators.email, 
+            Validators.minLength(5),
+            Validators.maxLength(100)
+          ]
+      ],
         password: [
           '',
           [

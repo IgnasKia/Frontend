@@ -31,7 +31,7 @@ export class CreateCoinModalComponent implements OnInit {
     composition: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]),
     weight: new FormControl('', [Validators.required, Validators.max(10000), Validators.min(1)]),
     shape: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]),
-    comment: new FormControl(''),
+    comment: new FormControl('', [Validators.maxLength(1000), Validators.minLength(10)] ),
   });
 
   fileName = '';

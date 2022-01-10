@@ -94,6 +94,12 @@
                      <mat-error *ngIf="f.issuer.errors.required">
                         Country is required
                      </mat-error>
+                     <mat-error *ngIf="f.issuer.errors.minlength">
+                        Country  must be at least 2 characters
+                     </mat-error>
+                     <mat-error *ngIf="f.issuer.errors.maxlength">
+                        Country  must not exceed 150 characters
+                     </mat-error>
                   </mat-error>
                </mat-form-field>
 
@@ -103,6 +109,12 @@
                   <mat-error *ngIf="submitted && f.year.errors">
                      <mat-error *ngIf="f.year.errors.required">
                         Year is required
+                     </mat-error>
+                     <mat-error *ngIf="f.year.errors.max">
+                        Year cannot exceed 2022
+                     </mat-error>
+                     <mat-error *ngIf="f.year.errors.min">
+                        Year at least have to be 1
                      </mat-error>
                   </mat-error>
                </mat-form-field>
@@ -114,6 +126,12 @@
                      <mat-error *ngIf="f.value.errors.required">
                         Value is required
                      </mat-error>
+                     <mat-error *ngIf="f.value.errors.max">
+                        Value must be less than 1000000
+                        </mat-error>
+                        <mat-error *ngIf="f.value.errors.min">
+                            Value must be at least 0.01
+                        </mat-error>
                   </mat-error>
                </mat-form-field>
 
@@ -124,6 +142,12 @@
                      <mat-error *ngIf="f.currency.errors.required">
                         Currency is required
                      </mat-error>
+                     <mat-error *ngIf="f.currency.errors.maxlength">
+                        Currency must not exceed 20 characters
+                       </mat-error>
+                       <mat-error *ngIf="f.currency.errors.minlength">
+                        Currency  must be at least 1 characters
+                       </mat-error>
                   </mat-error>
                </mat-form-field>
 
@@ -148,6 +172,12 @@
                      <mat-error *ngIf="f.price.errors.required">
                         Price is required
                      </mat-error>
+                     <mat-error *ngIf="f.price.errors.max">
+                        Price must not exceed 1000000
+                       </mat-error>
+                       <mat-error *ngIf="f.price.errors.min">
+                        Price  must be at least 1
+                       </mat-error>
                   </mat-error>
                </mat-form-field>
 
@@ -168,6 +198,14 @@
                 <mat-form-field class="full-width">
                   <mat-label>Comment</mat-label>
                   <textarea   matInput  placeholder="Comment" id="comment" formControlName="comment"></textarea>
+                  <mat-error *ngIf="submitted && f.comment.errors">
+                     <mat-error *ngIf="f.comment.errors.maxlength">
+                        Comment must not exceed 1000 characters
+                     </mat-error>
+                     <mat-error *ngIf="f.comment.errors.minlength">
+                        Comment must be at least 5 characters
+                     </mat-error>
+                  </mat-error>
                </mat-form-field>
       
                <mat-card-actions>

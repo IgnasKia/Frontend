@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   sellCard(cardId: string, price: number) {
-    if(confirm("Are you sure you want to sell this card?")) {
+    if(confirm("Are you sure you want to sell this banknote?")) {
       this.sellUserCard(cardId, this.user._id);
       this.updateUserBalance(price, this.user._id);
     }
