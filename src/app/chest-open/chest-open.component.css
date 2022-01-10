@@ -2,6 +2,8 @@ div.container {
     background:linear-gradient(to bottom, #333333, #e9d362);
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    padding: 1px;
   }
 
 h1 {
@@ -13,6 +15,7 @@ img {
   border-radius: 4px;
   padding: 5px;
   width: 350px;
+  margin: 20px;
 }
 
 th{

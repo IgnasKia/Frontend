@@ -1,27 +1,26 @@
 
 body {
   background: linear-gradient(to bottom, #2b6777, #c8d8e4); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .my-form{
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-   
-.full-width {
+  min-width: 150px;
+  max-width: 200px;
   width: 100%;
 }
 
-mat-card{
-  position: absolute;
-  left: 40%;
-  top: 25%;
-  height: 450px;
-  width: 370px;
+.full-width {
+  width: 100%;
 }
+mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
 
-mat-toolbar {
-  display: flex;
-  justify-content: center;
-}
+  .container {
+    max-width: 400px;
+  }

@@ -12,7 +12,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   user: any;
   subscription: Subscription;
   requestedTrade: any = [];
-
+  isMenuCollapsed = true;
+  
   constructor(public apiService: ApiService) { }
 
   @Input() balance = 0; // decorate the property with @Input()
@@ -39,4 +40,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
     })
   }
 
+  
 }

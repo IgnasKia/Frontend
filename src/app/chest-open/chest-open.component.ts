@@ -13,7 +13,7 @@ export class ChestOpenComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<ChestOpenComponent>, private fb: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.dialogRef.updateSize('50%', '100%');
+    this.dialogRef.updateSize('50%', '70%');
   }
 
 }

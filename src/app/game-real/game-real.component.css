@@ -1,4 +1,20 @@
-.split {
+@media (max-width: 600px) {
+  .split {
+    display: flex;
+    justify-content: space-between;
+    display: block;
+    margin: auto;
+  }
+
+  .centered {
+    padding: 150px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 600px) {
+
+  .split {
     height: 100%;
     width: 50%;
     position: fixed;
@@ -8,20 +24,11 @@
     padding-top: 20px;
   }
   
-  .left {
-    left: 0;
-    background:linear-gradient(to bottom, #333333, #e9d362);
-  }
-  
+
   .left:hover {
     transform: scale(0.7);
   }
   
-  .right {
-    right: 0;
-    background:linear-gradient(to bottom, #ef9273, #fef9f8);
-  }
-
   .right:hover {
     transform: scale(0.7);
   }
@@ -42,3 +49,18 @@
   .mat-button {
     font-size:48px;
   }
+}
+  
+.left {
+  left: 0;
+  background:linear-gradient(to bottom, #333333, #e9d362);
+}
+
+.right {
+  right: 0;
+  background:linear-gradient(to bottom, #ef9273, #fef9f8);
+}
+
+a:hover {
+  color: yellow;
+}

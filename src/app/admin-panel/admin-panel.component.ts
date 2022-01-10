@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -6,6 +6,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 import { User } from '../user';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 export interface UserElement {
   username: string;
 }
@@ -21,6 +24,16 @@ interface Rarity {
 export class AdminPanelComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['username', 'email', 'admin', 'change role', 'delete'];
+
+  dataSource = new MatTableDataSource<User>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   usersTable: UserElement[] = [];
 
@@ -73,7 +86,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   getUsers(){
     this.subscriptions.add(this.apiService.getUsers().subscribe( data => {
       this.users = data;
-      this.usersTable = data;
+      this.dataSource.data = data;
     }));
   }
 
@@ -124,6 +137,11 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     this.img_source = this.cardCreateForm.value.picture;
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
   ngOnDestroy() {
     // this.subscriptions.unsubscribe();

@@ -5,3 +5,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .custom-modalbox mat-dialog-container {
     padding: 0;
 }
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

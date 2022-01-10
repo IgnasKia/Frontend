@@ -1,20 +1,45 @@
 
     <app-navbar-general></app-navbar-general>
-   <mat-toolbar>
-      <mat-toolbar-row>
-         <a mat-mini-fab mat-button href="/">
-          <mat-icon>home</mat-icon>
-         </a>
-         <a mat-stroked-button color="accent" routerLink="/profile" *ngIf="apiService.loggedIn()">My banknotes</a>
-         <a mat-stroked-button color="accent" routerLink="/users" *ngIf="apiService.loggedIn()">Users</a>
-         <a mat-stroked-button color="accent" routerLink="/chat/connections" *ngIf="apiService.loggedIn()">Chat</a>
-         <a mat-stroked-button color="accent" routerLink="/trade" *ngIf="apiService.loggedIn()">Trade[{{requestedTrade.length}}]</a>
-         <a mat-stroked-button color="accent" routerLink="/admin" *ngIf="apiService.loggedIn() && apiService.isAdmin()">Admin Panel</a>
-         <span class="spacer"></span>
-         <h1 *ngIf="apiService.loggedIn()">Balance: {{ balance }}</h1>
-         <span class="spacer"></span>
-         <a mat-stroked-button color="warn" routerLink="/login" *ngIf="apiService.loggedIn()" (click)="apiService.logoutUser()">Logout</a>
-      </mat-toolbar-row>
-    </mat-toolbar>
-   
 
+    <nav class="navbar navbar-expand-lg bg-black">
+      <a mat-mini-fab mat-button href="/">
+         <mat-icon>home</mat-icon>
+        </a>
+    
+     
+    
+      <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <!-- Step 4: Close the menu when a link is clicked. -->
+            <a mat-stroked-button class="nav-link" routerLink="/profile" (click)="isMenuCollapsed = true" *ngIf="apiService.loggedIn()">My banknotes</a>
+          </li>
+          <li class="nav-item">
+            <a mat-stroked-button color="accent" (click)="isMenuCollapsed = true" routerLink="/users" *ngIf="apiService.loggedIn()">Users</a>
+          </li>
+          <li class="nav-item">
+            <a mat-stroked-button color="accent" (click)="isMenuCollapsed = true" routerLink="/chat/connections" *ngIf="apiService.loggedIn()">Chat</a>
+          </li>
+          <li class="nav-item">
+            <a mat-stroked-button color="accent" (click)="isMenuCollapsed = true" routerLink="/trade" *ngIf="apiService.loggedIn()">Trade[{{requestedTrade.length}}]</a>
+          </li>
+          <li class="nav-item">
+            <a mat-stroked-button color="accent" (click)="isMenuCollapsed = true" routerLink="/admin" *ngIf="apiService.loggedIn() && apiService.isAdmin()">Admin Panel</a>
+          </li>
+        </ul>
+        
+        
+      </div>
+
+       <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+       <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+         &#9776;
+       </button>
+
+       <span class="spacer"></span>
+         <h1 *ngIf="apiService.loggedIn()">Balance: {{ balance }}</h1>
+       <span class="spacer"></span>
+
+      <a mat-stroked-button color="warn" routerLink="/login" *ngIf="apiService.loggedIn()" (click)="apiService.logoutUser()">Logout</a>
+    </nav>

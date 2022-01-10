@@ -7,6 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./collection-nav.component.css']
 })
 export class CollectionNavComponent implements OnInit {
+  isMenuCollapsed = true;
 
   constructor(public apiService: ApiService) { }
 

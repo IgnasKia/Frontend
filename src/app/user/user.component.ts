@@ -54,8 +54,7 @@ export class UserComponent implements OnInit {
     dialogConfig.data = [this.id, cardId];
     const dialogRef = this.dialog.open(TradeCardsComponent, dialogConfig); 
 
-    dialogRef.afterClosed().subscribe(
-      () => this.getUserCards(this.id))
-  };
-  
+    dialogRef.afterClosed().subscribe(() => 
+      this.getUserCards(this.id));
+    };
 }

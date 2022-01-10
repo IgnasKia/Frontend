@@ -2,9 +2,7 @@
     flex: 1 1 auto;
 }
 
-a {
-    margin: 2px;
-}
+
 .mat-toolbar {
     background:black;
 }
@@ -12,3 +10,20 @@ a {
 h1 {
     color: #ffd740;
 }
+
+nav {
+    background: black;
+    color: yellow;
+}
+
+a {
+    color: #ffd740;
+}
+
+.navbar-toggler {
+    color: white;
+}
+h1 {
+    margin: 0;
+}
+

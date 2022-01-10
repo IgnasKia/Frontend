@@ -14,10 +14,16 @@ span.toolbar {
 }
 
 table {
-    width: 80%;
-    margin: auto;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
+.example-header {
+  display: flex;
+  justify-content: center;
+}
 .my-form{
   min-width: 150px;
   max-width: 500px;

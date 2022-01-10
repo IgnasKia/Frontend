@@ -23,10 +23,14 @@
     </div>
 
     <div class="random-coins">
-        <mat-card style=" background:linear-gradient(to bottom, #ef9273, #fef9f8);">
-            <h1 style="text-align: center;"> Random Coins</h1>
+
+        <mat-toolbar style="margin-bottom: 10px; display: flex; justify-content: center;">
+            <span style="text-align: center;"> Random Coins</span>
+        </mat-toolbar>
+            
             <a href="/collection/catalogue" ><button mat-raised-button style="margin: auto; display: block;">Browse all collection</button></a>
             <div class="coins">
+
                 <mat-card *ngFor='let coin of coins' class="coin-card">
                     <img src="{{coin.picture}}" alt="">
                     <mat-list>
@@ -45,8 +49,7 @@
                 </mat-card>
                 
             </div>
-            
-        </mat-card>
+
 
     </div>
 

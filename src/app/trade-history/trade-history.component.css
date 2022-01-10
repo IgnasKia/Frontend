@@ -14,17 +14,8 @@ mat-toolbar {
     display: flex;
     align-items: center ;
     flex-wrap: wrap;
+    max-width: auto;
 } 
-
-.trade-box {
-    display: flex;
-    margin: 10px;
-    background-color:rgba(255, 255, 255, 0.671);
-    width: fit-content;
-    
-}
-
-
 div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
@@ -44,4 +35,25 @@ div.gallery {
   div.desc {
     padding: 15px;
     text-align: center;
+  }
+
+  @media only screen and (min-width: 500px) {
+    .trade-box {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px;
+      background-color:rgba(255, 255, 255, 0.671);
+      width: fit-content;
+  }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .trade-box {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin: 5px;
+      background-color:rgba(255, 255, 255, 0.671);
+      width: fit-content;
+  }
   }

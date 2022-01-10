@@ -5,10 +5,9 @@
 a {
     margin: 2px;
     color: #ef9273;
+    text-decoration: none;
 }
-.mat-toolbar {
-    background:#fef9f8;
-}
+
 .white-icon {
     color: #fef9f8;
 }
@@ -16,3 +15,4 @@ a {
 .white-icon-button {
     background-color: #ef9273;
 }
+

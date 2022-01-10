@@ -2,10 +2,10 @@
     <h1>Choose your trading card</h1>
 
     <div class="card" *ngIf="tradingCard">
-      <img src="{{tradingCard.picture}}" alt="Avatar" style="width:100%">
+      <img src="{{tradingCard.picture}}" style="width:100%" class="img-fluid" alt="Responsive image">
       <div class="container">
-        <h4><b>{{tradingCard.name}}</b></h4> 
-        <p>Value: {{tradingCard.price}}</p> 
+        <h2><b>{{tradingCard.name}}</b></h2> 
+        <h2>Value: {{tradingCard.price}}</h2> 
       </div>
     </div>
 
@@ -18,8 +18,8 @@
               <h2 class="card-name">{{card.name}}</h2>
               <h3 class="card-rarity">{{card.rarity | uppercase}}</h3>
             </mat-card-header>
-            <img mat-card-image id="userCards" src={{card.picture}} alt="Photo of card">
-            <span>Value: {{card.price}}</span>
+            <img mat-card-image id="userCards" src={{card.picture}} alt="Photo of card" class="img-fluid">
+            <h2 style="text-align: center;">Value: {{card.price}}</h2>
             <mat-card-actions>
               <button mat-raised-button color="basic" (click)="submitTrade(card._id)">Trade</button>
             </mat-card-actions>

@@ -1,7 +1,15 @@
 .choice {
     display: flex;
-    justify-content:center;
+    justify-content:space-around;
 }
-a {
-    margin: 100px;
+.game {
+    background:linear-gradient(to bottom, #333333, #e9d362);
 }
+
+.real {
+    background:linear-gradient(to bottom, #ef9273, #fef9f8);
+}
+a:hover {
+    text-decoration: none;
+    color: yellow;
+  }

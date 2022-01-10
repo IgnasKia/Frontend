@@ -13,11 +13,6 @@ span.toolbar {
     margin: 0 auto;
 }
 
-table {
-    width: 80%;
-    margin: auto;
-}
-
 .my-form{
   min-width: 150px;
   max-width: 500px;
@@ -36,4 +31,16 @@ img {
   border-radius: 4px;
   padding: 5px;
   width: 150px;
+}
+
+ .example-header {
+   display: flex;
+   justify-content: center;
+ }
+
+ table {
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }

@@ -1,7 +1,7 @@
-body {
+
+.random-coins {
     background:linear-gradient(to bottom, #ef9273, #fef9f8);
 }
-
 div.home-introduction{
     display: flex;
     justify-content: space-around;
@@ -25,6 +25,7 @@ div.transbox {
   div.coins {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .coin-card {

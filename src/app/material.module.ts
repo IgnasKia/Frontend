@@ -1,5 +1,5 @@
 import { NgModule } from  '@angular/core';
- 
+import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from  '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -18,8 +18,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatPaginatorModule } from '@angular/material/paginator';
  
 @NgModule({
-imports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule,MatListModule,MatSidenavModule,MatPaginatorModule],
-exports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule,MatListModule,MatSidenavModule,MatPaginatorModule],
+imports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule,MatListModule,MatSidenavModule,MatPaginatorModule, MatSortModule],
+exports: [MatButtonModule,MatToolbarModule,MatCardModule,MatDialogModule,MatFormFieldModule,MatInputModule,MatIconModule,MatCheckboxModule,MatTableModule,MatTabsModule,MatSelectModule,MatSnackBarModule,MatDividerModule,MatListModule,MatSidenavModule,MatPaginatorModule, MatSortModule],
  
 })
  

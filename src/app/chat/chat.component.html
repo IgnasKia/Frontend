@@ -1,23 +1,28 @@
 <app-navbar [balance]="currentBalance"></app-navbar>
-<div class="container">
-    <div id="wrapper">
-        <div id="menu">
-            <div class="welcome">
-                <div class="btn-group">
-                    <button class="btn btn-secondary" (click)="roomClicked('general')" >General</button>
-                    <button class="btn btn-secondary" (click)="roomClicked('trading')" >Trading</button>
-                </div>
-                Currently on room: <b>{{activeRoom}}</b>
+<body>
+    <div class="container">
+        <div id="wrapper">
+            <div id="menu">
+                <mat-card>
+                    <div class="welcome">
+                        <div class="btn-group">
+                            <button mat-raised-button color="basic" class="btn btn-secondary" (click)="roomClicked('general')" style="margin: 3px;">General</button>
+                                <span class="activeRoom">Currently on room: <p class="font-weight-bold">{{activeRoom}}</p></span>
+                            <button mat-raised-button color="basic" class="btn btn-secondary" (click)="roomClicked('trading')" style="margin: 3px;">Trading</button>
+                        </div>
+                    </div>
+                    <button mat-raised-button color="primary" (click)="leaveRoom()">LEAVE ROOM</button>
+                </mat-card>
             </div>
-            <button (click)="leaveRoom()">LEAVE ROOM</button>
+        
+            <div id="chatbox">
+                <p *ngFor="let msg of messages[activeRoom]"><strong style="font-weight:bold;">{{ msg.sender }}:</strong> {{ msg.message }}</p>
+            </div>
+            <form #form="ngForm" (ngSubmit)="onSubmit()">
+                <input type="text" ngModel name="message" required>
+                <button mat-raised-button color="basic" [disabled]="!form.valid" type="submit"> send message</button>
+            </form>
         </div>
-    
-        <div id="chatbox">
-            <p *ngFor="let msg of messages[activeRoom]"><strong>{{ msg.sender }}:</strong> {{ msg.message }}</p>
-        </div>
-        <form #form="ngForm" (ngSubmit)="onSubmit()">
-            <input type="text" ngModel name="message" required>
-            <button [disabled]="!form.valid" type="submit"> send message</button>
-        </form>
     </div>
-</div>
+    
+</body>

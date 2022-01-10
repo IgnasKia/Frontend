@@ -1,21 +1,30 @@
+body{
+  background:linear-gradient(to bottom, #ef9273, #fef9f8);
+  display: flex;
+  justify-content: center;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.activeRoom{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.btn-group{
+  margin: 2px;
+}
 .active, .btn:hover {
     background-color: #666;
     color: white;
   }
 
-  div.container {
-    background:linear-gradient(to bottom, #ef9273, #fef9f8);
-  }
-
   * {
     margin: 0;
     padding: 0;
-  }
-  
-  body {
-    margin: 20px auto;
-    font-family: "Lato";
-    font-weight: 300;
   }
   
   form {
@@ -39,8 +48,7 @@
     margin: 0 auto;
     padding-bottom: 20px;
     background: #eee;
-    width: 600px;
-    max-width: 100%;
+    max-width: 600px;
     border: 2px solid #212121;
     border-radius: 4px;
   }
@@ -53,7 +61,7 @@
     padding: 10px;
     background: #fff;
     height: 300px;
-    width: 530px;
+    max-width: 530px;
     border: 1px solid #a7a7a7;
     overflow: auto;
     border-radius: 4px;

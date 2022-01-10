@@ -23,7 +23,7 @@ export class TradeCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTradingCardById(this.data[1]);
-    this.dialogRef.updateSize('100%', '100%');
+    this.dialogRef.updateSize('80%', '80%');
     this.getCurrentUser();
   }
 
@@ -51,7 +51,9 @@ export class TradeCardsComponent implements OnInit {
       const tradeData = {'traderOne': this.loggedUser._id, 'traderTwo': this.data[0], 'traderOneCardId':cardId,'traderTwoCardId':this.data[1]};
       this.subscriptions.add(this.apiService.createTempTrade(tradeData).subscribe(()=>{
         this.getCurrentUser();
+        location.reload();
       }));
+      
       this.dialogRef.close();
       this.openSnackBar(`✅ Trade request was sent succesfully, you can cancel this trade in Trade section`);
     }

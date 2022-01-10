@@ -1,15 +1,17 @@
 <body>
     <div class="content" >
+
         <div class="split-left" style="margin: 5px;">
-    
-            <img src="{{coin.picture}}" alt="" class="details-image">
-            
-            <div class="comments" *ngIf="coin.comment">
+            <img src="{{coin.picture}}" alt="" class="img-thumbnail">
+
+            <div *ngIf="coin.comment">
                 <h1 style="text-align: center;">Comments</h1>
-                {{coin.comment}}
+                <div class="container">
+                    {{coin.comment}}
+                  </div>
             </div>
+
         </div>
-        
       <div class="split-right" style="margin: 5px;">
             <h1 style="text-align: center;"><b>Features</b></h1>
             <table>
